@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreSquid.Web", "ScoreSquid.Web\ScoreSquid.Web.csproj", "{DDF7368A-DA34-4B8E-807D-03BE8E40737A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreSquid.Web.Tests", "ScoreSquid.Web.Tests\ScoreSquid.Web.Tests.csproj", "{D37D6010-F224-46C6-955C-3CB013DDC684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AC42036-B800-4B69-B29F-BF6EE1539A79}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		ScoreSquid.All.vsmdi = ScoreSquid.All.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreSquid.Web.Functional.Tests", "ScoreSquid.Web.Functional.Tests\ScoreSquid.Web.Functional.Tests.csproj", "{53DBFDC1-5A3E-42C4-9CA5-71256745B2D3}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ScoreSquid.All.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDF7368A-DA34-4B8E-807D-03BE8E40737A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF7368A-DA34-4B8E-807D-03BE8E40737A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF7368A-DA34-4B8E-807D-03BE8E40737A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF7368A-DA34-4B8E-807D-03BE8E40737A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D37D6010-F224-46C6-955C-3CB013DDC684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D37D6010-F224-46C6-955C-3CB013DDC684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D37D6010-F224-46C6-955C-3CB013DDC684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D37D6010-F224-46C6-955C-3CB013DDC684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DBFDC1-5A3E-42C4-9CA5-71256745B2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DBFDC1-5A3E-42C4-9CA5-71256745B2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DBFDC1-5A3E-42C4-9CA5-71256745B2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DBFDC1-5A3E-42C4-9CA5-71256745B2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
