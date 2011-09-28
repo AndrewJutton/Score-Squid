@@ -10,6 +10,7 @@ using ScoreSquid.Web.DependencyResolvers;
 using ScoreSquid.Web.Repositories;
 using Ninject;
 using MvcMiniProfiler;
+using AutoMapper;
 
 namespace ScoreSquid.Web
 {
@@ -75,6 +76,23 @@ namespace ScoreSquid.Web
                 .To<FixtureRepository>()
                 .WithConstructorArgument("ScoreSquidContext", x => x.Kernel.Get<IScoreSquidContext>());
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+        }
+
+        private class AutoMapperConfiguration
+        {
+            public static void Configure()
+            {
+                Mapper.Initialize(x => GetConfiguration(Mapper.Configuration));
+            }
+
+            private static void GetConfiguration(IConfiguration configuration)
+            {
+                var profiles = typeof(IAmWeb).Assembly.GetTypes().Where(x => typeof(Profile).IsAssignableFrom(x));
+                foreach (var profile in profiles)
+                {
+                    configuration.AddProfile(Activator.CreateInstance(profile) as Profile);
+                }
+            }
         }
     }
 }
