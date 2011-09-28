@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 using ScoreSquid.Web.Context;
 using ScoreSquid.Web.Repositories;
+using ScoreSquid.Web.Repositories.Commands;
 
 namespace ScoreSquid.Web.Tests
 {
@@ -19,15 +20,20 @@ namespace ScoreSquid.Web.Tests
         [TestInitialize]
         public void Setup()
         {
-            IScoreSquidContext context = new ScoreSquidContext();
-            teamRepository = new TeamRepository(context);
-            fixtureRepository = new FixtureRepository(context);
+            Commands commands = new Commands();
+            teamRepository = new TeamRepository(commands);
+            fixtureRepository = new FixtureRepository(commands);
         }
        
         [TestMethod]
         public void TestResultImporter_ShouldImportResultsFromFile()
         {
             string[] csvlines = File.ReadAllLines(@"C:\Projects\ScoreSquid\csv\E2.csv");
+
+            Division division = new Division
+            {
+                Name = "Championship"
+            };
 
             var results = (from csvline in csvlines.Skip(1)
                         let data = csvline.Split(',')
@@ -59,38 +65,32 @@ namespace ScoreSquid.Web.Tests
 
             foreach (var result in results)
             {
-                var homeTeam = CreateTeam(result.HomeTeam);
-                var awayTeam = CreateTeam(result.AwayTeam);
+                var homeTeam = CreateTeam(result.HomeTeam, division);
+                var awayTeam = CreateTeam(result.AwayTeam, division);
 
                 var matchResult = new Result
                 {
                     FullTimeResult = result.FullTimeResult,
                     HalfTimeResult = result.HalfTimeResult,
-                    HomeTeam = new Stats
-                    {
-                        Corners = result.HomeCorners.TryIntParse(),
-                        FoulsCommitted = result.HomeFouls.TryIntParse(),
-                        FullTimeTeamGoals = result.HomeTeamFullTimeTeamGoals.TryIntParse(),
-                        HalfTimeTeamGoals = result.HomeTeamHalfTimeTeamGoals.TryIntParse(),
-                        RedCards = result.HomeRedCards.TryIntParse(),   
-                        ShotsOnTarget = result.HomeShotsOnTarget.TryIntParse(),
-                        TotalShots = result.HomeTotalShots.TryIntParse(),
-                        YellowCards = result.HomeYellowCards.TryIntParse()
-                    },
-                    AwayTeam = new Stats
-                    {
-                        Corners = result.AwayCorners.TryIntParse(),
-                        FoulsCommitted = result.AwayFouls.TryIntParse(),
-                        FullTimeTeamGoals = result.AwayTeamFullTimeTeamGoals.TryIntParse(),
-                        HalfTimeTeamGoals = result.AwayTeamHalfTimeTeamGoals.TryIntParse(),
-                        RedCards = result.AwayRedCards.TryIntParse(),   
-                        ShotsOnTarget = result.AwayShotsOnTarget.TryIntParse(),
-                        TotalShots = result.AwayTotalShots.TryIntParse(),
-                        YellowCards = result.AwayYellowCards.TryIntParse()
-                    }
+                    HomeTeam_Corners = result.HomeCorners.TryIntParse(),
+                    HomeTeam_FoulsCommitted = result.HomeFouls.TryIntParse(),
+                    HomeTeam_FullTimeTeamGoals = result.HomeTeamFullTimeTeamGoals.TryIntParse(),
+                    HomeTeam_HalfTimeTeamGoals = result.HomeTeamHalfTimeTeamGoals.TryIntParse(),
+                    HomeTeam_RedCards = result.HomeRedCards.TryIntParse(),
+                    HomeTeam_ShotsOnTarget = result.HomeShotsOnTarget.TryIntParse(),
+                    HomeTeam_TotalShots = result.HomeTotalShots.TryIntParse(),
+                    HomeTeam_YellowCards = result.HomeYellowCards.TryIntParse(),
+                    AwayTeam_Corners = result.AwayCorners.TryIntParse(),
+                    AwayTeam_FoulsCommitted = result.AwayFouls.TryIntParse(),
+                    AwayTeam_FullTimeTeamGoals = result.AwayTeamFullTimeTeamGoals.TryIntParse(),
+                    AwayTeam_HalfTimeTeamGoals = result.AwayTeamHalfTimeTeamGoals.TryIntParse(),
+                    AwayTeam_RedCards = result.AwayRedCards.TryIntParse(),   
+                    AwayTeam_ShotsOnTarget = result.AwayShotsOnTarget.TryIntParse(),
+                    AwayTeam_TotalShots = result.AwayTotalShots.TryIntParse(),
+                    AwayTeam_YellowCards = result.AwayYellowCards.TryIntParse()
                 };
 
-                var fixture = fixtureRepository.LoadFixtureBy(result.HomeTeam, result.AwayTeam);
+                var fixture = fixtureRepository.GetByHomeTeamNameAndAwayTeamName(result.HomeTeam, result.AwayTeam);
 
                 if (fixture == null)
                 {
@@ -101,18 +101,18 @@ namespace ScoreSquid.Web.Tests
                     fixture.Result = matchResult;
                 }
 
-                fixtureRepository.SaveFixtureWithResult(fixture);
+                fixtureRepository.Save(fixture);
             }
 
-            Assert.IsTrue(results.Count > 0);
+             Assert.IsTrue(results.Count > 0);
         }
 
-        private Team CreateTeam(string teamName)
+        private Team CreateTeam(string teamName, Division division)
         {
             var team = teamRepository.LoadTeamByName(teamName);
             if (team == null)
             {
-                teamRepository.SaveNewTeam(teamName);
+                teamRepository.SaveNewTeam(teamName, division);
                 team = teamRepository.LoadTeamByName(teamName);
             }
             return team;

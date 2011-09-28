@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScoreSquidModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ScoreSquidContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Divisions" EntityType="ScoreSquidModel.Division" />
+    <EntitySet Name="Fixtures" EntityType="ScoreSquidModel.Fixture" />
+    <EntitySet Name="MiniLeagues" EntityType="ScoreSquidModel.MiniLeague" />
+    <EntitySet Name="Players" EntityType="ScoreSquidModel.Player" />
+    <EntitySet Name="Results" EntityType="ScoreSquidModel.Result" />
+    <EntitySet Name="Scores" EntityType="ScoreSquidModel.Score" />
+    <EntitySet Name="Seasons" EntityType="ScoreSquidModel.Season" />
+    <AssociationSet Name="MiniLeague_Chairman" Association="ScoreSquidModel.MiniLeague_Chairman">
+      <End Role="Players" EntitySet="Players" />
+      <End Role="MiniLeagues" EntitySet="MiniLeagues" />
+    </AssociationSet>
+    <AssociationSet Name="MiniLeague_Players" Association="ScoreSquidModel.MiniLeague_Players">
+      <End Role="MiniLeagues" EntitySet="MiniLeagues" />
+      <End Role="Players" EntitySet="Players" />
+    </AssociationSet>
+    <AssociationSet Name="Player_Score" Association="ScoreSquidModel.Player_Score">
+      <End Role="Scores" EntitySet="Scores" />
+      <End Role="Players" EntitySet="Players" />
+    </AssociationSet>
+    <EntitySet Name="Teams" EntityType="ScoreSquidModel.Team" />
+    <AssociationSet Name="DivisionTeam" Association="ScoreSquidModel.DivisionTeam">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="HomeTeamFixture" Association="ScoreSquidModel.HomeTeamFixture">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Fixture" EntitySet="Fixtures" />
+    </AssociationSet>
+    <AssociationSet Name="AwayTeamFixture" Association="ScoreSquidModel.AwayTeamFixture">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Fixture" EntitySet="Fixtures" />
+    </AssociationSet>
+    <AssociationSet Name="FixtureResult" Association="ScoreSquidModel.FixtureResult">
+      <End Role="Fixture" EntitySet="Fixtures" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Teams" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Division" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="Fixture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="HomeTeam" Relationship="ScoreSquidModel.HomeTeamFixture" FromRole="Fixture" ToRole="Team" />
+    <Property Type="Int32" Name="HomeTeamId" Nullable="false" />
+    <NavigationProperty Name="AwayTeam" Relationship="ScoreSquidModel.AwayTeamFixture" FromRole="Fixture" ToRole="Team" />
+    <Property Type="Int32" Name="AwayTeamId" Nullable="false" />
+    <NavigationProperty Name="Result" Relationship="ScoreSquidModel.FixtureResult" FromRole="Fixture" ToRole="Result" />
+  </EntityType>
+  <EntityType Name="MiniLeague">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Pin" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Chairman_Id" Type="Int32" />
+    <NavigationProperty Name="Player" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="MiniLeagues" ToRole="Players" />
+    <NavigationProperty Name="Players" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="MiniLeagues" ToRole="Players" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Forename" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Score_Id" Type="Int32" />
+    <Property Name="MiniLeague_Id" Type="Int32" />
+    <NavigationProperty Name="MiniLeagues" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="Players" ToRole="MiniLeagues" />
+    <NavigationProperty Name="MiniLeague" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="Players" ToRole="MiniLeagues" />
+    <NavigationProperty Name="Score" Relationship="ScoreSquidModel.Player_Score" FromRole="Players" ToRole="Scores" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullTimeResult" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="HalfTimeResult" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="HomeTeam_FullTimeTeamGoals" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_HalfTimeTeamGoals" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_TotalShots" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_ShotsOnTarget" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_ShotsHitPost" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_Corners" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_FoulsCommitted" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_Offsides" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_YellowCards" Type="Int32" Nullable="false" />
+    <Property Name="HomeTeam_RedCards" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_FullTimeTeamGoals" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_HalfTimeTeamGoals" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_TotalShots" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_ShotsOnTarget" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_ShotsHitPost" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_Corners" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_FoulsCommitted" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_Offsides" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_YellowCards" Type="Int32" Nullable="false" />
+    <Property Name="AwayTeam_RedCards" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WeekScore" Type="Int32" Nullable="false" />
+    <Property Name="MonthScore" Type="Int32" Nullable="false" />
+    <Property Name="TotalScore" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Players" Relationship="ScoreSquidModel.Player_Score" FromRole="Scores" ToRole="Players" />
+  </EntityType>
+  <EntityType Name="Season">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartYear" Type="Int32" Nullable="false" />
+    <Property Name="EndYear" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="MiniLeague_Chairman">
+    <End Role="Players" Type="ScoreSquidModel.Player" Multiplicity="0..1" />
+    <End Role="MiniLeagues" Type="ScoreSquidModel.MiniLeague" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Players">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MiniLeagues">
+        <PropertyRef Name="Chairman_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiniLeague_Players">
+    <End Role="MiniLeagues" Type="ScoreSquidModel.MiniLeague" Multiplicity="0..1" />
+    <End Role="Players" Type="ScoreSquidModel.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MiniLeagues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Players">
+        <PropertyRef Name="MiniLeague_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Player_Score">
+    <End Role="Scores" Type="ScoreSquidModel.Score" Multiplicity="0..1" />
+    <End Role="Players" Type="ScoreSquidModel.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Players">
+        <PropertyRef Name="Score_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Division" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Team" ToRole="Division" />
+    <Property Type="Int32" Name="DivisionId" Nullable="false" />
+  </EntityType>
+  <Association Name="DivisionTeam">
+    <End Type="ScoreSquidModel.Division" Role="Division" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HomeTeamFixture">
+    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fixture">
+        <PropertyRef Name="HomeTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AwayTeamFixture">
+    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fixture">
+        <PropertyRef Name="AwayTeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FixtureResult">
+    <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Result" Role="Result" Multiplicity="1" />
+  </Association>
+</Schema>

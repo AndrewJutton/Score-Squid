@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ScoreSquid.Web.Controllers;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 using ScoreSquid.Web.Repositories;
 using Moq;
 using System.Web.Mvc;
@@ -29,7 +29,7 @@ namespace ScoreSquid.Web.Tests
             List<Fixture> fixtures = new List<Fixture> { fixture };
 
             mockFixtureRepository = new Mock<IFixtureRepository>();
-            mockFixtureRepository.Setup(x => x.LoadAllFixtures()).Returns(fixtures);
+            mockFixtureRepository.Setup(x => x.GetAll()).Returns(fixtures);
         }
 
         [TestMethod]

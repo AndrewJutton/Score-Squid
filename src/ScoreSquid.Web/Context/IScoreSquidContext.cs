@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 
 namespace ScoreSquid.Web.Context
 {

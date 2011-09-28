@@ -3,33 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ScoreSquid.Web.Context;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
+using ScoreSquid.Web.Repositories.Commands;
 
 namespace ScoreSquid.Web.Repositories
 {
     public class FixtureRepository : IFixtureRepository
     {
-        private IScoreSquidContext scoreSquidContext;
+        private IFixtureCommands commands;
 
-        public FixtureRepository(IScoreSquidContext scoreSquidContext)
+        public FixtureRepository(IFixtureCommands commands)
         {
-            this.scoreSquidContext = scoreSquidContext;
+            this.commands = commands;
         }
 
-        public List<Fixture> LoadAllFixtures()
+        public List<Fixture> GetAll()
         {
-            return scoreSquidContext.Fixtures.ToList();
+            using(var context = new ScoreSquidContext())
+            {
+                return commands.GetAllFixtures(context);
+            }
         }
 
-        public Fixture LoadFixtureBy(string homeTeamName, string awayTeamName)
+        public Fixture GetByHomeTeamNameAndAwayTeamName(string homeTeamName, string awayTeamName)
         {
-            return scoreSquidContext.Fixtures.FirstOrDefault(x => x.HomeTeam.Name == homeTeamName && x.AwayTeam.Name == awayTeamName);
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.GetFixturesByHomeTeamNameAndAwayTeamName(context, homeTeamName, awayTeamName);
+            }
         }
 
-        public void SaveFixtureWithResult(Fixture fixture)
+        public void Save(Fixture fixture)
         {
-            scoreSquidContext.Fixtures.Add(fixture);
-            scoreSquidContext.Save();
+            using (var context = new ScoreSquidContext())
+            {
+                commands.SaveFixture(context, fixture);
+            }
         }
     }
 }

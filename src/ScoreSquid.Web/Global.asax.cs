@@ -11,6 +11,7 @@ using ScoreSquid.Web.Repositories;
 using Ninject;
 using MvcMiniProfiler;
 using AutoMapper;
+using ScoreSquid.Web.Repositories.Commands;
 
 namespace ScoreSquid.Web
 {
@@ -33,7 +34,6 @@ namespace ScoreSquid.Web
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Player", action = "Register", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
@@ -44,6 +44,8 @@ namespace ScoreSquid.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            AutoMapperConfiguration.Configure();
         }
 
         protected void Application_BeginRequest()
@@ -59,22 +61,17 @@ namespace ScoreSquid.Web
             MiniProfiler.Stop();
         }
 
-        private void SetDatabaseInitializer()
-        {
-            Database.SetInitializer(new ScoreSquidContextInitializer());
-        }
-
         private void RegisterDependencyResolver()
         {
             IKernel kernel = new StandardKernel();
-            kernel.Bind<IScoreSquidContext>()
-                .To<ScoreSquidContext>();
+            kernel.Bind<IPlayerCommands>().To<Commands>();
+            kernel.Bind<IFixtureCommands>().To<Commands>();
             kernel.Bind<IPlayerRepository>()
                 .To<PlayerRepository>()
-                .WithConstructorArgument("ScoreSquidContext", x => x.Kernel.Get<IScoreSquidContext>());
+                .WithConstructorArgument("commands", x => x.Kernel.Get<IPlayerCommands>());
             kernel.Bind<IFixtureRepository>()
                 .To<FixtureRepository>()
-                .WithConstructorArgument("ScoreSquidContext", x => x.Kernel.Get<IScoreSquidContext>());
+                .WithConstructorArgument("commands", x => x.Kernel.Get<IFixtureCommands>());
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
 

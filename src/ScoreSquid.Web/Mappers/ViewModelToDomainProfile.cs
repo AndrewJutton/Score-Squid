@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using ScoreSquid.Web.ViewModels;
+using ScoreSquid.Web.Models;
 
 namespace ScoreSquid.Web.Mappers
 {
@@ -18,6 +20,7 @@ namespace ScoreSquid.Web.Mappers
 
         protected override void Configure()
         {
+            Mapper.CreateMap<PlayerViewModel, Player>();
         }
     }
 }

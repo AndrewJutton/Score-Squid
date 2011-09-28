@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 
 namespace ScoreSquid.Web.Context
 {

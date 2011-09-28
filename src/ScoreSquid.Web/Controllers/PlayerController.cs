@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 using ScoreSquid.Web.Repositories;
+using ScoreSquid.Web.ViewModels;
+using AutoMapper;
 
 namespace ScoreSquid.Web.Controllers
 {
@@ -23,8 +25,10 @@ namespace ScoreSquid.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Player player)
+        public ActionResult Register(PlayerViewModel playerViewModel)
         {
+            var player = Mapper.Map<Player>(playerViewModel);
+
             playerRepository.RegisterPlayer(player);
             return RedirectToAction("Index", "MiniLeague");  
         }

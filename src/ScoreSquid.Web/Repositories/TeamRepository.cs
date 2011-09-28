@@ -3,34 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ScoreSquid.Web.Context;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
+using ScoreSquid.Web.Repositories.Commands;
 
 namespace ScoreSquid.Web.Repositories
 {
-    public class TeamRepository : ScoreSquid.Web.Repositories.ITeamRepository
+    public class TeamRepository : ITeamRepository
     {
-        private IScoreSquidContext scoreSquidContext;
+        private ITeamCommands commands;
 
-        public TeamRepository(IScoreSquidContext scoreSquidContext)
+        public TeamRepository(ITeamCommands commands)
         {
-            this.scoreSquidContext = scoreSquidContext;
+            this.commands = commands;
         }
 
         public bool TeamExists(string teamName)
         {
-            return scoreSquidContext.Teams.Any(x => x.Name == teamName);
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.TeamExists(context, teamName);
+            }
         }
 
-        public void SaveNewTeam(string teamName)
+        public void SaveNewTeam(string teamName, Division division)
         {
-            Team team = new Team { Name = teamName };
-            scoreSquidContext.Teams.Add(team);
-            scoreSquidContext.Save();
+            using (var context = new ScoreSquidContext())
+            {
+                commands.SaveNewTeam(context, teamName, division);
+            }
         }
 
         public Team LoadTeamByName(string teamName)
         {
-            return scoreSquidContext.Teams.FirstOrDefault(x => x.Name == teamName);
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.LoadTeamByName(context, teamName);
+            }
         }
     }
 }

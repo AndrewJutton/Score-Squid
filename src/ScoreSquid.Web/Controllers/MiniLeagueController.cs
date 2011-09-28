@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
+using ScoreSquid.Web.ViewModels;
 
 namespace ScoreSquid.Web.Controllers
 {
@@ -14,12 +15,12 @@ namespace ScoreSquid.Web.Controllers
             return View();
         }
 
-        public ActionResult Create(MiniLeague miniLeague)
+        public ActionResult Create(MiniLeagueViewModel miniLeagueViewModel)
         {
             return View();
         }
 
-        public ActionResult Join(MiniLeague miniLeague)
+        public ActionResult Join(MiniLeagueViewModel miniLeagueViewModel)
         {
             return View();
         }

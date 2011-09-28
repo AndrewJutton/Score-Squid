@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ScoreSquid.Web.Domain;
+using ScoreSquid.Web.Models;
 
 namespace ScoreSquid.Web.Repositories
 {
     public interface IFixtureRepository
     {
-        List<Fixture> LoadAllFixtures();
+        List<Fixture> GetAll();
 
-        Fixture LoadFixtureBy(string homeTeamName, string awayTeamName);
+        Fixture GetByHomeTeamNameAndAwayTeamName(string homeTeamName, string awayTeamName);
 
-        void SaveFixtureWithResult(Fixture fixture);
+        void Save(Fixture fixture);
     }
 }

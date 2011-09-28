@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ScoreSquid.Web.Domain.Fixture>
+﻿@model IEnumerable<ScoreSquid.Web.ViewModels.FixtureViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -25,8 +25,8 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
         <td>@String.Format("{0:D}", item.Date)</td>
-        <td>@item.HomeTeam.Name</td>
-        <td>@item.AwayTeam.Name</td>
+        <td>@item.HomeTeamName</td>
+        <td>@item.AwayTeamName</td>
     </tr>
 }
 

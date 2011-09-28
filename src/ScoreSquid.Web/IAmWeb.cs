@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ScoreSquid.Web
 {
-    interface IAmWeb
+    public interface IAmWeb
     {
     }
 }

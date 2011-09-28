@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using ScoreSquid.Web.Context;
 using ScoreSquid.Web.Repositories;
+using AutoMapper;
+using ScoreSquid.Web.ViewModels;
+using ScoreSquid.Web.Models;
 
 namespace ScoreSquid.Web.Controllers
 {
@@ -19,7 +22,11 @@ namespace ScoreSquid.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(fixtureRepository.LoadAllFixtures());
+            var fixtures = fixtureRepository.GetAll();
+
+            var fixtureViewModels = Mapper.Map<IList<Fixture>, IEnumerable<FixtureViewModel>>(fixtures);
+
+            return View(fixtureViewModels);
         }
     }
 }
