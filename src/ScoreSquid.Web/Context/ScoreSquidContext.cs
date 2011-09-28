@@ -12,6 +12,8 @@ namespace ScoreSquid.Web.Context
     {
         public ScoreSquidContext() : base(@"name=ScoreSquidContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public IDbSet<Season> Seasons { get; set; }
@@ -27,9 +29,6 @@ namespace ScoreSquid.Web.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Player>().Property(x => x.Forename).IsRequired().HasMaxLength(40);
-            modelBuilder.Entity<Player>().Property(x => x.Surname).IsRequired().HasMaxLength(40);
-            base.OnModelCreating(modelBuilder);
         }
     }
 }
