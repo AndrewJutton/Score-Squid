@@ -49,6 +49,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DivisionIdentifier" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Fixtures">
     <Key>
@@ -267,6 +268,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Teams" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Division" ToRole="Team" />
+          <Property Type="String" Name="DivisionIdentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Fixture">
           <Key>
@@ -448,6 +450,7 @@
         <MappingFragment StoreEntitySet="Divisions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DivisionIdentifier" ColumnName="DivisionIdentifier" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -570,7 +573,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ScoreSquidModel">
-        <EntityTypeShape EntityType="ScoreSquidModel.Division" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937500002" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScoreSquidModel.Division" Width="1.5" PointX="0.75" PointY="1.375" Height="1.787985026041667" IsExpanded="true" />
         <EntityTypeShape EntityType="ScoreSquidModel.Fixture" Width="1.5" PointX="5.25" PointY="1" Height="2.172587890625" IsExpanded="true" />
         <EntityTypeShape EntityType="ScoreSquidModel.MiniLeague" Width="1.5" PointX="7.375" PointY="7.25" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="ScoreSquidModel.Player" Width="1.5" PointX="5" PointY="5" Height="2.9417936197916656" IsExpanded="true" />
@@ -591,8 +594,8 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="ScoreSquidModel.Team" Width="1.5" PointX="3" PointY="1.375" Height="1.4033821614583331" />
         <AssociationConnector Association="ScoreSquidModel.DivisionTeam">
-          <ConnectorPoint PointX="2.25" PointY="2.172841796875" />
-          <ConnectorPoint PointX="3" PointY="2.172841796875" />
+          <ConnectorPoint PointX="2.25" PointY="2.2689925130208337" />
+          <ConnectorPoint PointX="3" PointY="2.2689925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="ScoreSquidModel.HomeTeamFixture">
           <ConnectorPoint PointX="4.5" PointY="2.6085737582047788" />

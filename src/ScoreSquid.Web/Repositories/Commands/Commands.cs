@@ -47,5 +47,10 @@ namespace ScoreSquid.Web.Repositories.Commands
         {
             return context.Teams.FirstOrDefault(x => x.Name == teamName);
         }
+
+        public Division LoadDivisionByIdentifier(ScoreSquidContext context, string divisionIdentifier)
+        {
+            return context.Divisions.FirstOrDefault(x => x.DivisionIdentifier.Equals(divisionIdentifier));
+        }
     }
 }

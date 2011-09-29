@@ -40,5 +40,13 @@ namespace ScoreSquid.Web.Repositories
                 return commands.LoadTeamByName(context, teamName);
             }
         }
+
+        public Division LoadDivisionByIdentifier(string divisionIdentifier)
+        {
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.LoadDivisionByIdentifier(context, divisionIdentifier);
+            }
+        }
     }
 }

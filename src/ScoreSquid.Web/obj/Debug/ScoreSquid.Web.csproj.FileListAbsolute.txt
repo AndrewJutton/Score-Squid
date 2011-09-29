@@ -34,3 +34,6 @@ C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Ninject.xml
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\obj\Debug\ScoreSquid.Web.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\obj\Debug\ScoreSquid.Web.pdb
+C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Common.Logging.dll
+C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Quartz.dll
+C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Quartz.xml

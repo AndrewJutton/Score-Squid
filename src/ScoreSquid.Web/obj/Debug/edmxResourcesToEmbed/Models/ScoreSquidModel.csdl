@@ -45,6 +45,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Teams" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Division" ToRole="Team" />
+    <Property Type="String" Name="DivisionIdentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Fixture">
     <Key>

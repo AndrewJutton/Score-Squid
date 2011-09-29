@@ -6,6 +6,7 @@
         <MappingFragment StoreEntitySet="Divisions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DivisionIdentifier" ColumnName="DivisionIdentifier" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

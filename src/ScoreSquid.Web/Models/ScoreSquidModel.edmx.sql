@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/28/2011 20:59:03
+-- Date Created: 09/29/2011 21:02:29
 -- Generated from EDMX file: C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\Models\ScoreSquidModel.edmx
 -- --------------------------------------------------
 
@@ -75,7 +75,8 @@ GO
 -- Creating table 'Divisions'
 CREATE TABLE [dbo].[Divisions] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NULL
+    [Name] nvarchar(max)  NULL,
+    [DivisionIdentifier] nvarchar(max)  NOT NULL
 );
 GO
 

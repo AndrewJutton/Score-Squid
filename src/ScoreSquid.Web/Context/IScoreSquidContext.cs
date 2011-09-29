@@ -14,6 +14,7 @@ namespace ScoreSquid.Web.Context
         IDbSet<Fixture> Fixtures { get; set; }
         IDbSet<MiniLeague> MiniLeagues { get; set; }
         IDbSet<Player> Players { get; set; }
+        IDbSet<Division> Divisions { get; set; }
 
         bool Save();
     }

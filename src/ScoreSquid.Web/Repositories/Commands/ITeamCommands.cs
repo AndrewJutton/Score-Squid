@@ -14,5 +14,7 @@ namespace ScoreSquid.Web.Repositories.Commands
         void SaveNewTeam(ScoreSquidContext context, string teamName, Division division);
 
         Team LoadTeamByName(ScoreSquidContext context, string teamName);
+
+        Division LoadDivisionByIdentifier(ScoreSquidContext context, string divisionIdentifier);
     }
 }

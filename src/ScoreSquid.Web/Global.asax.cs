@@ -12,6 +12,9 @@ using Ninject;
 using MvcMiniProfiler;
 using AutoMapper;
 using ScoreSquid.Web.Repositories.Commands;
+using Quartz;
+using Quartz.Impl;
+using ScoreSquid.Web.Scheduler;
 
 namespace ScoreSquid.Web
 {
@@ -46,6 +49,8 @@ namespace ScoreSquid.Web
             RegisterRoutes(RouteTable.Routes);
 
             AutoMapperConfiguration.Configure();
+
+            //StartScheduler();
         }
 
         protected void Application_BeginRequest()
@@ -73,6 +78,22 @@ namespace ScoreSquid.Web
                 .To<FixtureRepository>()
                 .WithConstructorArgument("commands", x => x.Kernel.Get<IFixtureCommands>());
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+        }
+
+        private void StartScheduler()
+        {
+            ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+
+            IScheduler sched = schedulerFactory.GetScheduler();
+            sched.Start();
+
+            JobDetail championshipDownloader = new JobDetail("ResultExtractor", null, typeof(ChampionshipJob));
+
+            Trigger trigger = TriggerUtils.MakeMinutelyTrigger();
+            trigger.StartTimeUtc = TriggerUtils.GetEvenMinuteDate(DateTime.UtcNow);
+            trigger.Name = "Hourly Trigger";
+
+            sched.ScheduleJob(championshipDownloader, trigger);
         }
 
         private class AutoMapperConfiguration

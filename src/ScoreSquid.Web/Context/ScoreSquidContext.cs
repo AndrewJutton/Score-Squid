@@ -17,6 +17,7 @@ namespace ScoreSquid.Web.Context
         }
 
         public IDbSet<Season> Seasons { get; set; }
+        public IDbSet<Division> Divisions { get; set; }
         public IDbSet<Team> Teams { get; set; }
         public IDbSet<Fixture> Fixtures { get; set; }
         public IDbSet<MiniLeague> MiniLeagues { get; set; }
