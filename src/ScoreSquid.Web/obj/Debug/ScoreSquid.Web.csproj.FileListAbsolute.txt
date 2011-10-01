@@ -21,7 +21,6 @@ C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\ScoreSquid.Web.pdb
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\AutoMapper.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\DataAnnotationsExtensions.ClientValidation.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\DataAnnotationsExtensions.dll
-C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\EntityFramework.Patterns.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Glimpse.Core.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\MvcMiniProfiler.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Ninject.dll

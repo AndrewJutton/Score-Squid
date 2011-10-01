@@ -17,12 +17,15 @@ namespace ScoreSquid.Web.Repositories
             this.commands = commands;
         }
 
-        public Player FindPlayer(string userId, string password)
+        public Player Login(string username, string password)
         {
-            return new Player();
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.LoginPlayer(context, username, password);
+            }
         }
 
-        public bool RegisterPlayer(Player player)
+        public Player Register(Player player)
         {
             using (var context = new ScoreSquidContext())
             {

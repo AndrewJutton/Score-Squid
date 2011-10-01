@@ -8,6 +8,7 @@ using ScoreSquid.Web.ViewModels;
 
 namespace ScoreSquid.Web.Controllers
 {
+    [Authorize]
     public class MiniLeagueController : Controller
     {
         public ActionResult Index()

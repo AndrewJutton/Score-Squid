@@ -48,9 +48,6 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.Patterns">
-      <HintPath>..\packages\EntityFramework.Patterns.0.2\lib\net40\EntityFramework.Patterns.dll</HintPath>
-    </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.0.83\lib\net40\Glimpse.Core.dll</HintPath>
     </Reference>
@@ -94,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Authentication\FormsAuthenticationService.cs" />
+    <Compile Include="Authentication\IFormsAuthentication.cs" />
+    <Compile Include="Authentication\PlayerIdentity.cs" />
     <Compile Include="Context\IScoreSquidContext.cs" />
     <Compile Include="Controllers\FixtureController.cs" />
     <Compile Include="Controllers\MiniLeagueController.cs" />
@@ -153,7 +153,10 @@
     <Compile Include="Repositories\TeamRepository.cs" />
     <Compile Include="Scheduler\ResultImporter.cs" />
     <Compile Include="Scheduler\ChampionshipJob.cs" />
+    <Compile Include="Tasks\IPlayerTasks.cs" />
+    <Compile Include="Tasks\PlayerTasks.cs" />
     <Compile Include="ViewModels\FixtureViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MiniLeagueViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
   </ItemGroup>
@@ -217,9 +220,6 @@
     <Content Include="Views\Fixture\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Player\_Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Player\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -239,8 +239,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ScoreSquidModel.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Player\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginStatus.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Session\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

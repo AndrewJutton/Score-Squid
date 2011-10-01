@@ -15,6 +15,10 @@ using ScoreSquid.Web.Repositories.Commands;
 using Quartz;
 using Quartz.Impl;
 using ScoreSquid.Web.Scheduler;
+using ScoreSquid.Web.Authentication;
+using ScoreSquid.Web.Tasks;
+using System.Web.Security;
+using System.Security.Principal;
 
 namespace ScoreSquid.Web
 {
@@ -35,7 +39,7 @@ namespace ScoreSquid.Web
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Player", action = "Register", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Player", action = "Login", id = UrlParameter.Optional } // Parameter defaults
             );
         }
 
@@ -66,9 +70,33 @@ namespace ScoreSquid.Web
             MiniProfiler.Stop();
         }
 
+        public override void Init()
+        {
+            this.PostAuthenticateRequest += new EventHandler(MvcApplication_PostAuthenticateRequest);
+            base.Init();
+        }
+
+        private void MvcApplication_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            HttpCookie authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                string encTicket = authCookie.Value;
+                if (!String.IsNullOrEmpty(encTicket))
+                {
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(encTicket);
+                    PlayerIdentity playerIdentity = new PlayerIdentity(ticket);
+                    GenericPrincipal principal = new GenericPrincipal(playerIdentity, null);
+                    HttpContext.Current.User = principal;
+                }
+            }
+        }
+
         private void RegisterDependencyResolver()
         {
             IKernel kernel = new StandardKernel();
+            kernel.Bind<IFormsAuthentication>().To<FormsAuthenticationService>();
+            kernel.Bind<IPlayerTasks>().To<PlayerTasks>();
             kernel.Bind<IPlayerCommands>().To<Commands>();
             kernel.Bind<IFixtureCommands>().To<Commands>();
             kernel.Bind<IPlayerRepository>()

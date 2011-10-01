@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using ScoreSquid.Web.Context;
+using System.Text;
 using ScoreSquid.Web.Models;
 
-namespace ScoreSquid.Web.Repositories
+namespace ScoreSquid.Web.Tasks
 {
-    public interface IPlayerRepository
+    public interface IPlayerTasks
     {
         Player Login(string username, string password);
 

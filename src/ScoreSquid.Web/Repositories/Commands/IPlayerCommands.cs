@@ -9,6 +9,8 @@ namespace ScoreSquid.Web.Repositories.Commands
 {
     public interface IPlayerCommands
     {
-        bool RegisterPlayer(ScoreSquidContext context, Player player);
+        Player LoginPlayer(ScoreSquidContext context, string username, string password);
+
+        Player RegisterPlayer(ScoreSquidContext context, Player player);
     }
 }

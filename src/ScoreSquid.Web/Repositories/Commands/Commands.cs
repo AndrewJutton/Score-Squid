@@ -25,10 +25,11 @@ namespace ScoreSquid.Web.Repositories.Commands
             context.Save();
         }
 
-        public bool RegisterPlayer(ScoreSquidContext context, Player player)
+        public Player RegisterPlayer(ScoreSquidContext context, Player player)
         {
             context.Players.Add(player);
-            return context.Save();
+            context.Save();
+            return player;
         }
 
         public bool TeamExists(ScoreSquidContext context, string teamName)
@@ -51,6 +52,15 @@ namespace ScoreSquid.Web.Repositories.Commands
         public Division LoadDivisionByIdentifier(ScoreSquidContext context, string divisionIdentifier)
         {
             return context.Divisions.FirstOrDefault(x => x.DivisionIdentifier.Equals(divisionIdentifier));
+        }
+
+
+        public Player LoginPlayer(ScoreSquidContext context, string username, string password)
+        {
+            return context
+                .Players
+                .FirstOrDefault(x => x.Username.Equals(username)
+                    && x.Password.Equals(password));
         }
     }
 }

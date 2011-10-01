@@ -1,0 +1,9 @@
+﻿@using ScoreSquid.Web.Authentication;
+
+@if(Request.IsAuthenticated) {
+    <text>Welcome <b>@(((PlayerIdentity)HttpContext.Current.User.Identity).FriendlyName)</b>!
+    [ @Html.ActionLink("Log Off", "LogOff", "Player") ]</text>
+}
+else {
+    @:[ @Html.ActionLink("Log On", "LogIn", new { controller = "Player", returnUrl = HttpContext.Current.Request.RawUrl }) ]
+}
