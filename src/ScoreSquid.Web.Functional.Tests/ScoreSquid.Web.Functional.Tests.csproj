@@ -36,9 +36,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Coypu.0.2.0\lib\net40\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Coypu">
-      <HintPath>..\packages\Coypu.0.2.0\lib\net40\Coypu.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.SHDocVw">
       <HintPath>..\packages\Coypu.0.2.0\lib\net40\Interop.SHDocVw.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -100,19 +97,19 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\PlayerRegistration.feature.cs">
+    <Compile Include="Features\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PlayerRegistration.feature</DependentUpon>
+      <DependentUpon>Login.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\PlayerSteps.cs" />
+    <Compile Include="Steps\LoginSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Features\PlayerRegistration.feature">
+    <None Include="Features\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>PlayerRegistration.feature.cs</LastGenOutput>
+      <LastGenOutput>Login.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
