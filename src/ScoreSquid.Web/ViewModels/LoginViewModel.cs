@@ -12,6 +12,7 @@ namespace ScoreSquid.Web.ViewModels
         [Required(ErrorMessage = "Required field")]
         [StringLength(60, ErrorMessage = "Max 60 chars")]
         [Email]
+        [Display(Name = "Email Address")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Required field")]

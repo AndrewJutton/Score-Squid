@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2011 21:02:29
+-- Date Created: 10/01/2011 12:16:30
 -- Generated from EDMX file: C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\Models\ScoreSquidModel.edmx
 -- --------------------------------------------------
 
@@ -107,7 +107,8 @@ CREATE TABLE [dbo].[Players] (
     [Forename] nvarchar(40)  NOT NULL,
     [Surname] nvarchar(40)  NOT NULL,
     [Score_Id] int  NULL,
-    [MiniLeague_Id] int  NULL
+    [MiniLeague_Id] int  NULL,
+    [Team_Id] int  NOT NULL
 );
 GO
 
@@ -316,6 +317,20 @@ ADD CONSTRAINT [FK_FixtureResult]
 CREATE INDEX [IX_FK_FixtureResult]
 ON [dbo].[Fixtures]
     ([Result_Id]);
+GO
+
+-- Creating foreign key on [Team_Id] in table 'Players'
+ALTER TABLE [dbo].[Players]
+ADD CONSTRAINT [FK_PlayerTeam]
+    FOREIGN KEY ([Team_Id])
+    REFERENCES [dbo].[Teams]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlayerTeam'
+CREATE INDEX [IX_FK_PlayerTeam]
+ON [dbo].[Players]
+    ([Team_Id]);
 GO
 
 -- --------------------------------------------------

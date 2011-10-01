@@ -15,11 +15,13 @@ namespace ScoreSquid.Web.Controllers
     public class PlayerController : Controller
     {
         private IPlayerTasks playerTasks;
+        private ITeamTasks teamTasks;
         private IFormsAuthentication formsAuthentication;
 
-        public PlayerController(IPlayerTasks playerTasks, IFormsAuthentication formsAuthentication)
+        public PlayerController(IPlayerTasks playerTasks, ITeamTasks teamTasks, IFormsAuthentication formsAuthentication)
         {
             this.playerTasks = playerTasks;
+            this.teamTasks = teamTasks;
             this.formsAuthentication = formsAuthentication;
         }
 
@@ -66,15 +68,30 @@ namespace ScoreSquid.Web.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            var teams = teamTasks.GetAll();
+
+            var model = new RegistrationViewModel
+            {
+                Teams = teams
+                            .ToList()
+                            .Select(x => new SelectListItem
+                            {
+                                Text = x.Name,
+                                Value = x.Id.ToString()
+                            })
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Register(PlayerViewModel model)
+        public ActionResult Register(RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var team = teamTasks.LoadById(model.SelectedTeamId);
                 var player = Mapper.Map<Player>(model);
+                player.Team = team;
 
                 var registeredPlayer = playerTasks.Register(player);
 

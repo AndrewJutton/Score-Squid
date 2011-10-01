@@ -10,7 +10,7 @@ namespace ScoreSquid.Web.Authentication
     {
         public void SignIn(string userName, bool createPersistentCookie)
         {
-            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+            FormsAuthenticationTicket formsAuthentationTicket = new FormsAuthenticationTicket(
                 1,
                 userName,
                 DateTime.Now,
@@ -18,8 +18,8 @@ namespace ScoreSquid.Web.Authentication
                 createPersistentCookie,
                 userName);
 
-            string encTicket = FormsAuthentication.Encrypt(authTicket);
-            HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+            string encryptionTicket = FormsAuthentication.Encrypt(formsAuthentationTicket);
+            HttpContext.Current.Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptionTicket));
         }
 
         public void SignOut()

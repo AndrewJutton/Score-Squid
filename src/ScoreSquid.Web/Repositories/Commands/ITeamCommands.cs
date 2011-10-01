@@ -16,5 +16,9 @@ namespace ScoreSquid.Web.Repositories.Commands
         Team LoadTeamByName(ScoreSquidContext context, string teamName);
 
         Division LoadDivisionByIdentifier(ScoreSquidContext context, string divisionIdentifier);
+
+        List<Team> GetAllTeams(ScoreSquidContext context);
+
+        Team LoadTeamById(ScoreSquidContext context, int id);
     }
 }

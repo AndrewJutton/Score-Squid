@@ -32,7 +32,8 @@ namespace ScoreSquid.Web.Tests
 
             Division division = new Division
             {
-                Name = "Championship"
+                Name = "Championship",
+                DivisionIdentifier = "E2"
             };
 
             var results = (from csvline in csvlines.Skip(1)

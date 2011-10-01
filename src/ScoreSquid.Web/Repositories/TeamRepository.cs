@@ -33,6 +33,14 @@ namespace ScoreSquid.Web.Repositories
             }
         }
 
+        public Team LoadById(int id)
+        {
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.LoadTeamById(context, id);
+            }
+        }
+
         public Team LoadTeamByName(string teamName)
         {
             using (var context = new ScoreSquidContext())
@@ -46,6 +54,14 @@ namespace ScoreSquid.Web.Repositories
             using (var context = new ScoreSquidContext())
             {
                 return commands.LoadDivisionByIdentifier(context, divisionIdentifier);
+            }
+        }
+
+        public List<Team> GetAll()
+        {
+            using (var context = new ScoreSquidContext())
+            {
+                return commands.GetAllTeams(context);
             }
         }
     }

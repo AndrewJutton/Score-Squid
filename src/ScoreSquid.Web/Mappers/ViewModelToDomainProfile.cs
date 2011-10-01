@@ -20,7 +20,7 @@ namespace ScoreSquid.Web.Mappers
 
         protected override void Configure()
         {
-            Mapper.CreateMap<PlayerViewModel, Player>();
+            Mapper.CreateMap<RegistrationViewModel, Player>();
         }
     }
 }

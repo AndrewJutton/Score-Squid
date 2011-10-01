@@ -37,6 +37,10 @@
       <End Role="Fixture" EntitySet="Fixtures" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.Store.PlayerTeam">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Divisions">
     <Key>
@@ -76,6 +80,7 @@
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Score_Id" Type="int" Nullable="true" />
     <Property Name="MiniLeague_Id" Type="int" Nullable="true" />
+    <Property Name="Team_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Results">
     <Key>
@@ -211,6 +216,18 @@
       </Principal>
       <Dependent Role="Fixture">
         <PropertyRef Name="Result_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayerTeam">
+    <End Role="Player" Type="ScoreSquidModel.Store.Players" Multiplicity="*" />
+    <End Role="Team" Type="ScoreSquidModel.Store.Teams" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="Team_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

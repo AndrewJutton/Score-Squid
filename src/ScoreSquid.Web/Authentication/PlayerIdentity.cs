@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Security.Principal;
+using System.Web.Security;
 
 namespace ScoreSquid.Web.Authentication
 {
     public class PlayerIdentity : IIdentity
     {
-        private System.Web.Security.FormsAuthenticationTicket ticket;
+        private FormsAuthenticationTicket ticket;
 
-        public PlayerIdentity(System.Web.Security.FormsAuthenticationTicket ticket)
+        public PlayerIdentity(FormsAuthenticationTicket ticket)
         {
             this.ticket = ticket;
         }

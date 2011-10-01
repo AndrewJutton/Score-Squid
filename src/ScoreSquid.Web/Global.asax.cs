@@ -97,14 +97,19 @@ namespace ScoreSquid.Web
             IKernel kernel = new StandardKernel();
             kernel.Bind<IFormsAuthentication>().To<FormsAuthenticationService>();
             kernel.Bind<IPlayerTasks>().To<PlayerTasks>();
+            kernel.Bind<ITeamTasks>().To<TeamTasks>();
             kernel.Bind<IPlayerCommands>().To<Commands>();
             kernel.Bind<IFixtureCommands>().To<Commands>();
+            kernel.Bind<ITeamCommands>().To<Commands>();
             kernel.Bind<IPlayerRepository>()
                 .To<PlayerRepository>()
                 .WithConstructorArgument("commands", x => x.Kernel.Get<IPlayerCommands>());
             kernel.Bind<IFixtureRepository>()
                 .To<FixtureRepository>()
                 .WithConstructorArgument("commands", x => x.Kernel.Get<IFixtureCommands>());
+            kernel.Bind<ITeamRepository>()
+                .To<TeamRepository>()
+                .WithConstructorArgument("commands", x => x.Kernel.Get<ITeamCommands>());
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
 

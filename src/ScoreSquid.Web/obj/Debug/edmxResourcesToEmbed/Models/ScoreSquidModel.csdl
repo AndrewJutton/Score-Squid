@@ -37,6 +37,10 @@
       <End Role="Fixture" EntitySet="Fixtures" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.PlayerTeam">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Division">
     <Key>
@@ -84,6 +88,7 @@
     <NavigationProperty Name="MiniLeagues" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="Players" ToRole="MiniLeagues" />
     <NavigationProperty Name="MiniLeague" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="Players" ToRole="MiniLeagues" />
     <NavigationProperty Name="Score" Relationship="ScoreSquidModel.Player_Score" FromRole="Players" ToRole="Scores" />
+    <NavigationProperty Name="Team" Relationship="ScoreSquidModel.PlayerTeam" FromRole="Player" ToRole="Team" />
   </EntityType>
   <EntityType Name="Result">
     <Key>
@@ -215,5 +220,9 @@
   <Association Name="FixtureResult">
     <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="1" />
     <End Type="ScoreSquidModel.Result" Role="Result" Multiplicity="1" />
+  </Association>
+  <Association Name="PlayerTeam">
+    <End Type="ScoreSquidModel.Player" Role="Player" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="1" />
   </Association>
 </Schema>

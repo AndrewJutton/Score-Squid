@@ -30,5 +30,6 @@ namespace ScoreSquid.Web.Models
         public virtual ICollection<MiniLeague> MiniLeagues { get; set; }
         public virtual MiniLeague MiniLeague { get; set; }
         public virtual Score Score { get; set; }
+        public virtual Team Team { get; set; }
     }
 }
