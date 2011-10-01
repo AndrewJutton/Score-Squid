@@ -19,6 +19,7 @@ using ScoreSquid.Web.Authentication;
 using ScoreSquid.Web.Tasks;
 using System.Web.Security;
 using System.Security.Principal;
+using ScoreSquid.Web.ErrorHandling;
 
 namespace ScoreSquid.Web
 {
@@ -29,7 +30,7 @@ namespace ScoreSquid.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new ElmahHandleErrorAttribute());
         }
 
         public static void RegisterRoutes(RouteCollection routes)

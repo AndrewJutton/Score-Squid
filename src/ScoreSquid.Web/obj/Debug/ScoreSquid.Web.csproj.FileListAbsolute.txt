@@ -37,3 +37,4 @@ C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Common.Logging.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Quartz.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Quartz.xml
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\bin\Elmah.dll

@@ -9,9 +9,11 @@ using ScoreSquid.Web.ViewModels;
 using AutoMapper;
 using ScoreSquid.Web.Tasks;
 using ScoreSquid.Web.Authentication;
+using ScoreSquid.Web.ErrorHandling;
 
 namespace ScoreSquid.Web.Controllers
 {
+    [HandleError]
     public class PlayerController : Controller
     {
         private IPlayerTasks playerTasks;

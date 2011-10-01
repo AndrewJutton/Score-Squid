@@ -45,6 +45,9 @@
     <Reference Include="DataAnnotationsExtensions.ClientValidation">
       <HintPath>..\packages\DataAnnotationsExtensions.MVC3.0.6.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
@@ -98,14 +101,19 @@
   <ItemGroup>
     <Compile Include="App_Start\MiniProfiler.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ElmahController.cs" />
     <Compile Include="Authentication\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\IFormsAuthentication.cs" />
     <Compile Include="Authentication\PlayerIdentity.cs" />
     <Compile Include="Context\IScoreSquidContext.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FixtureController.cs" />
     <Compile Include="Controllers\MiniLeagueController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="DependencyResolvers\NinjectDependencyResolver.cs" />
+    <Compile Include="ErrorHandling\JavaScriptException.cs" />
+    <Compile Include="ErrorHandling\ElmahHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,6 +181,7 @@
   <ItemGroup>
     <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Content\images\banner.JPG" />
+    <Content Include="Scripts\errorhandler.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />

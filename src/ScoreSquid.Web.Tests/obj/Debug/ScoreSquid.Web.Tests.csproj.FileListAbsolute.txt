@@ -67,3 +67,4 @@ C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Tests\bin\Debug\Common.Logging.dl
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Tests\bin\Debug\Quartz.xml
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Tests\bin\Debug\Machine.Specifications.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Tests\bin\Debug\MvcContrib.TestHelper.dll
+C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Tests\bin\Debug\Elmah.dll
