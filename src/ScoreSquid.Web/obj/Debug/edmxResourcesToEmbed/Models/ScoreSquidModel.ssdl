@@ -9,6 +9,7 @@
     <EntitySet Name="Scores" EntityType="ScoreSquidModel.Store.Scores" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Seasons" EntityType="ScoreSquidModel.Store.Seasons" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Teams" EntityType="ScoreSquidModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MiniLeagueFixtures" EntityType="ScoreSquidModel.Store.MiniLeagueFixtures" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MiniLeague_Chairman" Association="ScoreSquidModel.Store.MiniLeague_Chairman">
       <End Role="Players" EntitySet="Players" />
       <End Role="MiniLeagues" EntitySet="MiniLeagues" />
@@ -40,6 +41,14 @@
     <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.Store.PlayerTeam">
       <End Role="Player" EntitySet="Players" />
       <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="MiniLeagueFixturesMiniLeague" Association="ScoreSquidModel.Store.MiniLeagueFixturesMiniLeague">
+      <End Role="MiniLeagueFixtures" EntitySet="MiniLeagueFixtures" />
+      <End Role="MiniLeague" EntitySet="MiniLeagues" />
+    </AssociationSet>
+    <AssociationSet Name="MiniLeagueFixturesFixture" Association="ScoreSquidModel.Store.MiniLeagueFixturesFixture">
+      <End Role="MiniLeagueFixtures" EntitySet="MiniLeagueFixtures" />
+      <End Role="Fixture" EntitySet="Fixtures" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Divisions">
@@ -135,6 +144,14 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DivisionId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="MiniLeagueFixtures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MiniLeague_Id" Type="int" Nullable="false" />
+    <Property Name="Fixture_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="MiniLeague_Chairman">
     <End Role="Players" Type="ScoreSquidModel.Store.Players" Multiplicity="0..1" />
     <End Role="MiniLeagues" Type="ScoreSquidModel.Store.MiniLeagues" Multiplicity="*" />
@@ -228,6 +245,30 @@
       </Principal>
       <Dependent Role="Player">
         <PropertyRef Name="Team_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiniLeagueFixturesMiniLeague">
+    <End Role="MiniLeagueFixtures" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="*" />
+    <End Role="MiniLeague" Type="ScoreSquidModel.Store.MiniLeagues" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MiniLeague">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MiniLeagueFixtures">
+        <PropertyRef Name="MiniLeague_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiniLeagueFixturesFixture">
+    <End Role="MiniLeagueFixtures" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="*" />
+    <End Role="Fixture" Type="ScoreSquidModel.Store.Fixtures" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Fixture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MiniLeagueFixtures">
+        <PropertyRef Name="Fixture_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

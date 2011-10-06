@@ -55,14 +55,14 @@ namespace ScoreSquid.Web
 
             AutoMapperConfiguration.Configure();
 
-            //StartScheduler();
+            StartScheduler();
         }
 
         protected void Application_BeginRequest()
         {
             if (Request.IsLocal)
             {
-                MvcMiniProfiler.MiniProfiler.Start();
+                MiniProfiler.Start();
             }
         }
 
@@ -73,7 +73,7 @@ namespace ScoreSquid.Web
 
         public override void Init()
         {
-            this.PostAuthenticateRequest += new EventHandler(MvcApplication_PostAuthenticateRequest);
+            PostAuthenticateRequest += MvcApplication_PostAuthenticateRequest;
             base.Init();
         }
 
@@ -122,8 +122,12 @@ namespace ScoreSquid.Web
             sched.Start();
 
             JobDetail championshipDownloader = new JobDetail("ResultExtractor", null, typeof(ChampionshipJob));
+#if DEBUG
+            Trigger trigger = TriggerUtils.MakeImmediateTrigger(1, TimeSpan.FromDays(50));
+#else
+            Trigger trigger = TriggerUtils.MakeDailyTrigger(00, 01);
+#endif
 
-            Trigger trigger = TriggerUtils.MakeMinutelyTrigger();
             trigger.StartTimeUtc = TriggerUtils.GetEvenMinuteDate(DateTime.UtcNow);
             trigger.Name = "Hourly Trigger";
 

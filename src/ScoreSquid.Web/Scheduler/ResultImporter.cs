@@ -8,24 +8,20 @@ using ScoreSquid.Web.Repositories;
 
 namespace ScoreSquid.Web.Scheduler
 {
-    public class ResultImporter
+    public class ResultImporter : ImporterBase
     {
+        public ResultImporter()
+        {
+            
+        }
+
+        public ResultImporter(ITeamRepository teamRepository, IFixtureRepository fixtureRepository) : base(teamRepository, fixtureRepository)
+        {
+        }
+
         public void Import(string[] fixtureResults, string divisionName, string divisionIdentifier)
         {
-            Commands commands = new Commands();
-            TeamRepository teamRepository = new TeamRepository(commands);
-            FixtureRepository fixtureRepository = new FixtureRepository(commands);
-
-            var division = teamRepository.LoadDivisionByIdentifier(divisionIdentifier);
-
-            if (division == null)
-            {
-                division = new Division
-                {
-                    Name = divisionName,
-                    DivisionIdentifier = divisionIdentifier
-                };
-            }
+            var division = GetCreateDivison(divisionName, divisionIdentifier);
 
             var results = (from csvline in fixtureResults.Skip(1)
                         let data = csvline.Split(',')
@@ -58,8 +54,8 @@ namespace ScoreSquid.Web.Scheduler
 
             foreach (var result in results)
             {
-                var homeTeam = CreateTeam(result.HomeTeam, division, teamRepository);
-                var awayTeam = CreateTeam(result.AwayTeam, division, teamRepository);
+                var homeTeam = CreateTeam(result.HomeTeam, division, TeamRepository);
+                var awayTeam = CreateTeam(result.AwayTeam, division, TeamRepository);
 
                 var matchResult = new Result
                 {
@@ -83,7 +79,7 @@ namespace ScoreSquid.Web.Scheduler
                     AwayTeam_YellowCards = result.AwayYellowCards.TryIntParse()
                 };
 
-                var fixture = fixtureRepository.GetByHomeTeamNameAndAwayTeamName(result.HomeTeam, result.AwayTeam);
+                var fixture = FixtureRepository.GetByHomeTeamNameAndAwayTeamName(result.HomeTeam, result.AwayTeam);
 
                 if (fixture == null)
                 {
@@ -94,19 +90,8 @@ namespace ScoreSquid.Web.Scheduler
                     fixture.Result = matchResult;
                 }
 
-                fixtureRepository.Save(fixture);
+                FixtureRepository.Save(fixture);
             }
-        }
-
-        private Team CreateTeam(string teamName, Division division, TeamRepository teamRepository)
-        {
-            var team = teamRepository.LoadTeamByName(teamName);
-            if (team == null)
-            {
-                teamRepository.SaveNewTeam(teamName, division);
-                team = teamRepository.LoadTeamByName(teamName);
-            }
-            return team;
         }
     }
 

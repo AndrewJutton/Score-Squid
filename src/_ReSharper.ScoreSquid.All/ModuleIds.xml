@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="DDF7368A-DA34-4B8E-807D-03BE8E40737A" ModuleId="ScoreSquid.Web" />
+  <Module PersistentId="D37D6010-F224-46C6-955C-3CB013DDC684" ModuleId="ScoreSquid.Web.Tests" />
+</Modules>

@@ -14,6 +14,7 @@
     <AssemblyName>ScoreSquid.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,6 +131,9 @@
     <Compile Include="Models\MiniLeague.cs">
       <DependentUpon>ScoreSquidModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MiniLeagueFixtures.cs">
+      <DependentUpon>ScoreSquidModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Player.cs">
       <DependentUpon>ScoreSquidModel.tt</DependentUpon>
     </Compile>
@@ -166,6 +170,9 @@
     <Compile Include="Repositories\ITeamRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\TeamRepository.cs" />
+    <Compile Include="Scheduler\FixtureImporter.cs" />
+    <Compile Include="Scheduler\FixturesJob.cs" />
+    <Compile Include="Scheduler\ImporterBase.cs" />
     <Compile Include="Scheduler\ResultImporter.cs" />
     <Compile Include="Scheduler\ChampionshipJob.cs" />
     <Compile Include="Services\FootballDataRepository.cs" />

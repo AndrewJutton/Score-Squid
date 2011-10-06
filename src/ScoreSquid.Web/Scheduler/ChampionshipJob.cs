@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Quartz.Impl;
@@ -21,13 +20,21 @@ namespace ScoreSquid.Web.Scheduler
         public void Execute(JobExecutionContext context)
         {
             var footballDataRepository = new FootballDataRepository();
-            var results = footballDataRepository.LoadResults(footballDataRepository.ChampionshipResultsUri);
+            var results = footballDataRepository.LoadCsvFromUri(footballDataRepository.ChampionshipResultsUri);
 
             if (results != null)
             {
                 var resultImporter = new ResultImporter();
                 resultImporter.Import(results, "Championsip", "E2");
             }
+            return;
+            var fixtures = footballDataRepository.LoadCsvFromUri(footballDataRepository.LatestFixturesUri);
+
+            if (fixtures != null)
+            {
+                new FixtureImporter().Import(fixtures, "Championship", "E2");
+            }
+
         }
-    } 
+    }
 }

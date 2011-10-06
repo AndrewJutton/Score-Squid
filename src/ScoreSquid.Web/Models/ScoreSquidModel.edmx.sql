@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/01/2011 12:16:30
--- Generated from EDMX file: C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web\Models\ScoreSquidModel.edmx
+-- Date Created: 10/06/2011 22:07:24
+-- Generated from EDMX file: C:\Projects\Web\Score-Squid\src\ScoreSquid.Web\Models\ScoreSquidModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -38,6 +38,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_FixtureResult]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Fixtures] DROP CONSTRAINT [FK_FixtureResult];
 GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerTeam]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Players] DROP CONSTRAINT [FK_PlayerTeam];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MiniLeagueFixturesMiniLeague]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MiniLeagueFixtures] DROP CONSTRAINT [FK_MiniLeagueFixturesMiniLeague];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MiniLeagueFixturesFixture]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MiniLeagueFixtures] DROP CONSTRAINT [FK_MiniLeagueFixturesFixture];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -66,6 +75,9 @@ IF OBJECT_ID(N'[dbo].[Seasons]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Teams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Teams];
+GO
+IF OBJECT_ID(N'[dbo].[MiniLeagueFixtures]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MiniLeagueFixtures];
 GO
 
 -- --------------------------------------------------
@@ -165,6 +177,14 @@ CREATE TABLE [dbo].[Teams] (
 );
 GO
 
+-- Creating table 'MiniLeagueFixtures'
+CREATE TABLE [dbo].[MiniLeagueFixtures] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [MiniLeague_Id] int  NOT NULL,
+    [Fixture_Id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -214,6 +234,12 @@ GO
 -- Creating primary key on [Id] in table 'Teams'
 ALTER TABLE [dbo].[Teams]
 ADD CONSTRAINT [PK_Teams]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'MiniLeagueFixtures'
+ALTER TABLE [dbo].[MiniLeagueFixtures]
+ADD CONSTRAINT [PK_MiniLeagueFixtures]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -331,6 +357,34 @@ ADD CONSTRAINT [FK_PlayerTeam]
 CREATE INDEX [IX_FK_PlayerTeam]
 ON [dbo].[Players]
     ([Team_Id]);
+GO
+
+-- Creating foreign key on [MiniLeague_Id] in table 'MiniLeagueFixtures'
+ALTER TABLE [dbo].[MiniLeagueFixtures]
+ADD CONSTRAINT [FK_MiniLeagueFixturesMiniLeague]
+    FOREIGN KEY ([MiniLeague_Id])
+    REFERENCES [dbo].[MiniLeagues]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MiniLeagueFixturesMiniLeague'
+CREATE INDEX [IX_FK_MiniLeagueFixturesMiniLeague]
+ON [dbo].[MiniLeagueFixtures]
+    ([MiniLeague_Id]);
+GO
+
+-- Creating foreign key on [Fixture_Id] in table 'MiniLeagueFixtures'
+ALTER TABLE [dbo].[MiniLeagueFixtures]
+ADD CONSTRAINT [FK_MiniLeagueFixturesFixture]
+    FOREIGN KEY ([Fixture_Id])
+    REFERENCES [dbo].[Fixtures]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MiniLeagueFixturesFixture'
+CREATE INDEX [IX_FK_MiniLeagueFixturesFixture]
+ON [dbo].[MiniLeagueFixtures]
+    ([Fixture_Id]);
 GO
 
 -- --------------------------------------------------

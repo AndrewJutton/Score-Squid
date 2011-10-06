@@ -31,3 +31,13 @@ C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\WatiN.
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ScoreSquid.Web.Functional.Tests.dll
 C:\Users\Andrew\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ScoreSquid.Web.Functional.Tests.pdb
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\ScoreSquid.Web.Functional.Tests.dll.config
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\ScoreSquid.Web.Functional.Tests.dll
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\ScoreSquid.Web.Functional.Tests.pdb
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\TechTalk.SpecFlow.dll
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\WatiN.Core.dll
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\Castle.Core.xml
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\bin\Debug\WatiN.Core.xml
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ScoreSquid.Web.Functional.Tests.dll
+C:\Projects\Web\Score-Squid\src\ScoreSquid.Web.Functional.Tests\obj\Debug\ScoreSquid.Web.Functional.Tests.pdb
