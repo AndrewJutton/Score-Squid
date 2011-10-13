@@ -1,0 +1,32 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Models/f:ScoreSquidModel.edmx.sql" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Controllers/f:PlayerController.cs" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/f:packages.config" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="824" fromTop="22" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="1459" fromTop="20" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="659" fromTop="18" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="824" fromTop="22" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files\NUnit 2.5.10\bin\net-2.0\lib</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+</Configuration>

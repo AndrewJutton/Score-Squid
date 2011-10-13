@@ -100,13 +100,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MiniLeagueFixtures">
-      <EntityTypeMapping TypeName="IsTypeOf(ScoreSquidModel.MiniLeagueFixtures)">
-        <MappingFragment StoreEntitySet="MiniLeagueFixtures">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <AssociationSetMapping Name="FixtureResult" TypeName="ScoreSquidModel.FixtureResult" StoreEntitySet="Fixtures">
       <EndProperty Name="Result">
         <ScalarProperty Name="Id" ColumnName="Result_Id" />
@@ -120,22 +113,6 @@
         <ScalarProperty Name="Id" ColumnName="Team_Id" />
       </EndProperty>
       <EndProperty Name="Player">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="MiniLeagueFixturesMiniLeague" TypeName="ScoreSquidModel.MiniLeagueFixturesMiniLeague" StoreEntitySet="MiniLeagueFixtures">
-      <EndProperty Name="MiniLeague">
-        <ScalarProperty Name="Id" ColumnName="MiniLeague_Id" />
-      </EndProperty>
-      <EndProperty Name="MiniLeagueFixtures">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="MiniLeagueFixturesFixture" TypeName="ScoreSquidModel.MiniLeagueFixturesFixture" StoreEntitySet="MiniLeagueFixtures">
-      <EndProperty Name="Fixture">
-        <ScalarProperty Name="Id" ColumnName="Fixture_Id" />
-      </EndProperty>
-      <EndProperty Name="MiniLeagueFixtures">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

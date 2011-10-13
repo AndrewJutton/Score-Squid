@@ -20,6 +20,23 @@ namespace ScoreSquid.Web.Scheduler
         public void Execute(JobExecutionContext context)
         {
             var footballDataRepository = new FootballDataRepository();
+            LoadResults(footballDataRepository);
+
+            LoadFixtures(footballDataRepository);
+        }
+
+        private static void LoadFixtures(FootballDataRepository footballDataRepository)
+        {
+            var fixtures = footballDataRepository.LoadCsvFromUri(footballDataRepository.LatestFixturesUri);
+
+            if (fixtures != null)
+            {
+                new FixtureImporter().Import(fixtures, "Championship", "E2");
+            }
+        }
+
+        private static void LoadResults(FootballDataRepository footballDataRepository)
+        {
             var results = footballDataRepository.LoadCsvFromUri(footballDataRepository.ChampionshipResultsUri);
 
             if (results != null)
@@ -27,14 +44,6 @@ namespace ScoreSquid.Web.Scheduler
                 var resultImporter = new ResultImporter();
                 resultImporter.Import(results, "Championsip", "E2");
             }
-            return;
-            var fixtures = footballDataRepository.LoadCsvFromUri(footballDataRepository.LatestFixturesUri);
-
-            if (fixtures != null)
-            {
-                new FixtureImporter().Import(fixtures, "Championship", "E2");
-            }
-
         }
     }
 }

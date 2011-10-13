@@ -131,7 +131,7 @@
     <Compile Include="Models\MiniLeague.cs">
       <DependentUpon>ScoreSquidModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MiniLeagueFixtures.cs">
+    <Compile Include="Models\MiniLeagueFixture.cs">
       <DependentUpon>ScoreSquidModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs">
@@ -175,6 +175,7 @@
     <Compile Include="Scheduler\ImporterBase.cs" />
     <Compile Include="Scheduler\ResultImporter.cs" />
     <Compile Include="Scheduler\ChampionshipJob.cs" />
+    <Compile Include="Scheduler\WebFixtureImporter.cs" />
     <Compile Include="Services\FootballDataRepository.cs" />
     <Compile Include="Tasks\IPlayerTasks.cs" />
     <Compile Include="Tasks\ITeamTasks.cs" />

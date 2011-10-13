@@ -41,15 +41,6 @@
       <End Role="Player" EntitySet="Players" />
       <End Role="Team" EntitySet="Teams" />
     </AssociationSet>
-    <EntitySet Name="MiniLeagueFixtures" EntityType="ScoreSquidModel.MiniLeagueFixtures" />
-    <AssociationSet Name="MiniLeagueFixturesMiniLeague" Association="ScoreSquidModel.MiniLeagueFixturesMiniLeague">
-      <End Role="MiniLeagueFixtures" EntitySet="MiniLeagueFixtures" />
-      <End Role="MiniLeague" EntitySet="MiniLeagues" />
-    </AssociationSet>
-    <AssociationSet Name="MiniLeagueFixturesFixture" Association="ScoreSquidModel.MiniLeagueFixturesFixture">
-      <End Role="MiniLeagueFixtures" EntitySet="MiniLeagueFixtures" />
-      <End Role="Fixture" EntitySet="Fixtures" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Division">
     <Key>
@@ -71,7 +62,6 @@
     <NavigationProperty Name="AwayTeam" Relationship="ScoreSquidModel.AwayTeamFixture" FromRole="Fixture" ToRole="Team" />
     <Property Type="Int32" Name="AwayTeamId" Nullable="false" />
     <NavigationProperty Name="Result" Relationship="ScoreSquidModel.FixtureResult" FromRole="Fixture" ToRole="Result" />
-    <NavigationProperty Name="MiniLeagueFixtures" Relationship="ScoreSquidModel.MiniLeagueFixturesFixture" FromRole="Fixture" ToRole="MiniLeagueFixtures" />
   </EntityType>
   <EntityType Name="MiniLeague">
     <Key>
@@ -83,7 +73,6 @@
     <Property Name="Chairman_Id" Type="Int32" />
     <NavigationProperty Name="Player" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="MiniLeagues" ToRole="Players" />
     <NavigationProperty Name="Players" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="MiniLeagues" ToRole="Players" />
-    <NavigationProperty Name="MiniLeagueFixtures" Relationship="ScoreSquidModel.MiniLeagueFixturesMiniLeague" FromRole="MiniLeague" ToRole="MiniLeagueFixtures" />
   </EntityType>
   <EntityType Name="Player">
     <Key>
@@ -233,23 +222,7 @@
     <End Type="ScoreSquidModel.Result" Role="Result" Multiplicity="1" />
   </Association>
   <Association Name="PlayerTeam">
-    <End Type="ScoreSquidModel.Player" Role="Player" Multiplicity="0..1" />
+    <End Type="ScoreSquidModel.Player" Role="Player" Multiplicity="1" />
     <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="1" />
-  </Association>
-  <EntityType Name="MiniLeagueFixtures">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="MiniLeague" Relationship="ScoreSquidModel.MiniLeagueFixturesMiniLeague" FromRole="MiniLeagueFixtures" ToRole="MiniLeague" />
-    <NavigationProperty Name="Fixture" Relationship="ScoreSquidModel.MiniLeagueFixturesFixture" FromRole="MiniLeagueFixtures" ToRole="Fixture" />
-  </EntityType>
-  <Association Name="MiniLeagueFixturesMiniLeague">
-    <End Type="ScoreSquidModel.MiniLeagueFixtures" Role="MiniLeagueFixtures" Multiplicity="*" />
-    <End Type="ScoreSquidModel.MiniLeague" Role="MiniLeague" Multiplicity="1" />
-  </Association>
-  <Association Name="MiniLeagueFixturesFixture">
-    <End Type="ScoreSquidModel.MiniLeagueFixtures" Role="MiniLeagueFixtures" Multiplicity="*" />
-    <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="1" />
   </Association>
 </Schema>
