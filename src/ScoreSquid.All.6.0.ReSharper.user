@@ -1,15 +1,66 @@
 <Configuration>
   <RecentFiles>
     <RecentFiles>
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Models/f:ScoreSquidModel.edmx.sql" caret="0" fromTop="0" />
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Controllers/f:PlayerController.cs" caret="0" fromTop="0" />
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/f:packages.config" caret="0" fromTop="0" />
       <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="824" fromTop="22" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/f:packages.config" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Views/d:Player/f:Login.cshtml" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Models/f:ScoreSquidModel.edmx" caret="43993" fromTop="41" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Services/f:FootballDataRepository.cs" caret="573" fromTop="22" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Scheduler/f:FixturesJobTests.cs" caret="1700" fromTop="14" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Repositories/f:IDivisionRepository.cs" caret="1388" fromTop="29" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Repositories/d:Commands/f:ITeamCommands.cs" caret="331" fromTop="13" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Repositories/f:TeamRepository.cs" caret="864" fromTop="24" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/f:App.config" caret="157" fromTop="3" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Repositories/d:Commands/f:Commands.cs" caret="1454" fromTop="20" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Models/f:ScoreSquidModel.tt" caret="0" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:WebFixtureImporter.cs" caret="857" fromTop="20" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Repositories/f:FixtureRepository.cs" caret="345" fromTop="12" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ResultImporter.cs" caret="4408" fromTop="11" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/f:ResultImporter.cs" caret="4418" fromTop="11" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Models/f:ScoreSquidModel.edmx.sql" caret="557" fromTop="15" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:ViewModels/f:FixtureViewModel.cs" caret="148" fromTop="7" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Views/d:Fixture/f:Index.cshtml" caret="389" fromTop="22" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Seed/f:SeedFixtures.cs" caret="653" fromTop="14" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Controllers/f:FixtureController.cs" caret="322" fromTop="13" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Controllers/f:PlayerController.cs" caret="3288" fromTop="37" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Views/d:Prediction/f:Index.cshtml" caret="44" fromTop="0" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:ViewModels/f:PredictionViewModel.cs" caret="148" fromTop="7" />
+      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Controllers/f:PredictionController.cs" caret="427" fromTop="17" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PlayerControllerTests.cs" caret="2307" fromTop="17" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="265" fromTop="2" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="2009" fromTop="33" />
     </RecentFiles>
     <RecentEdits>
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="1459" fromTop="20" />
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="659" fromTop="18" />
-      <File id="DDF7368A-DA34-4B8E-807D-03BE8E40737A/d:Scheduler/f:ChampionshipJob.cs" caret="824" fromTop="22" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="561" fromTop="17" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1622" fromTop="32" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="311" fromTop="10" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Controllers/f:PredictionControllerTests.cs" caret="1484" fromTop="30" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="896" fromTop="29" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="995" fromTop="15" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="1788" fromTop="28" />
+      <File id="D37D6010-F224-46C6-955C-3CB013DDC684/d:Builders/f:ScoreSquidBuilders.cs" caret="1988" fromTop="32" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -26,7 +77,189 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
+  <UnitTestSessions>
+    <Session>
+      <Name>Session #1</Name>
+      <Elements>
+        <UnitTestElement Provider="MSTest" Id="ScoreSquid.Web.Tests.Scheduler.FixturesJobTests" type="MsTestTestClassElement" TypeName="ScoreSquid.Web.Tests.Scheduler.FixturesJobTests" Project="D37D6010-F224-46C6-955C-3CB013DDC684" />
+        <UnitTestElement Provider="MSTest" Id="ScoreSquid.Web.Tests.Seed.SeedFixtures" type="MsTestTestClassElement" TypeName="ScoreSquid.Web.Tests.Seed.SeedFixtures" Project="D37D6010-F224-46C6-955C-3CB013DDC684" />
+        <UnitTestElement Provider="MSTest" Id="ScoreSquid.Web.Tests.Scheduler.FixturesJobTests.LoadFixturesFromHtml" ParentId="ScoreSquid.Web.Tests.Scheduler.FixturesJobTests" type="MsTestTestMethodElement" MethodName="LoadFixturesFromHtml" Project="D37D6010-F224-46C6-955C-3CB013DDC684" />
+        <UnitTestElement Provider="MSTest" Id="ScoreSquid.Web.Tests.Seed.SeedFixtures.SeedACoupleOfFixtures" ParentId="ScoreSquid.Web.Tests.Seed.SeedFixtures" type="MsTestTestMethodElement" MethodName="SeedACoupleOfFixtures" Project="D37D6010-F224-46C6-955C-3CB013DDC684" />
+      </Elements>
+    </Session>
+  </UnitTestSessions>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="stream" priority="63" />
+      <Item value="Encoding`0" priority="31" />
+      <Item value="doc" priority="127" />
+      <Item value="string" priority="156" />
+      <Item value="File`0" priority="31" />
+      <Item value="private" priority="63" />
+      <Item value="new" priority="995" />
+      <Item value="foreach" priority="31" />
+      <Item value="prefix" priority="61" />
+      <Item value="fixtureHolder" priority="31" />
+      <Item value="p" priority="63" />
+      <Item value="var" priority="253" />
+      <Item value="IFixtureHolder`0" priority="32" />
+      <Item value="holder" priority="31" />
+      <Item value="Collection&lt;Fixture&gt;" priority="57" />
+      <Item value="fixtures" priority="63" />
+      <Item value="Fixture" priority="84" />
+      <Item value="public" priority="253" />
+      <Item value="void" priority="31" />
+      <Item value="TeamRepository" priority="16" />
+      <Item value="Commands" priority="57" />
+      <Item value="teamRepository" priority="90" />
+      <Item value="Team" priority="173" />
+      <Item value="interface" priority="30" />
+      <Item value="class" priority="61" />
+      <Item value="IDivisonCommands`0" priority="63" />
+      <Item value="ProcessInfo`0" priority="31" />
+      <Item value="DivisionRepository`0" priority="31" />
+      <Item value="List" priority="31" />
+      <Item value="using" priority="125" />
+      <Item value="ScoreSquidContext" priority="74" />
+      <Item value="return" priority="191" />
+      <Item value="commands" priority="95" />
+      <Item value="context" priority="159" />
+      <Item value="x" priority="95" />
+      <Item value="Division`0" priority="62" />
+      <Item value="DivisionRepository" priority="28" />
+      <Item value="divisionRepository" priority="63" />
+      <Item value="leagueIdentifier" priority="63" />
+      <Item value="Context" priority="31" />
+      <Item value="if" priority="31" />
+      <Item value="championship" priority="192" />
+      <Item value="null" priority="31" />
+      <Item value="Division" priority="211" />
+      <Item value="DivisionIdentifier" priority="95" />
+      <Item value="Name" priority="197" />
+      <Item value="division" priority="63" />
+      <Item value="brighton" priority="31" />
+      <Item value="FixtureRepository" priority="29" />
+      <Item value="HomeTeam" priority="31" />
+      <Item value="Team`0" priority="95" />
+      <Item value="AwayTeam" priority="65" />
+      <Item value="westHam" priority="32" />
+      <Item value="Date" priority="32" />
+      <Item value="DateTime`0" priority="32" />
+      <Item value="fixtureRepository" priority="31" />
+      <Item value="fixture" priority="31" />
+      <Item value="Html" priority="29" />
+      <Item value="model" priority="31" />
+      <Item value="Model" priority="31" />
+      <Item value="PredictionViewModel" priority="14" />
+      <Item value="ITeamTasks" priority="16" />
+      <Item value="IPlayerTasks`0" priority="31" />
+      <Item value="PlayerControllerTests" priority="28" />
+      <Item value="PredictionController" priority="29" />
+      <Item value="mockPlayerTasks" priority="31" />
+      <Item value="controllerBuilder" priority="31" />
+      <Item value="controller" priority="31" />
+      <Item value="PlayerControllerTests`0" priority="31" />
+      <Item value="Machine" priority="31" />
+      <Item value="Specifications" priority="26" />
+      <Item value="It`0" priority="26" />
+      <Item value="Player" priority="16" />
+      <Item value="MiniLeague" priority="92" />
+      <Item value="MiniLeague`0" priority="96" />
+      <Item value="miniLeague" priority="96" />
+      <Item value="Collection&lt;MiniLeagueFixture&gt;" priority="57" />
+      <Item value="MiniLeagueFixture" priority="28" />
+      <Item value="Fixtures" priority="32" />
+      <Item value="static" priority="63" />
+      <Item value="Id" priority="65" />
+      <Item value="this" priority="95" />
+      <Item value="DivisionId" priority="32" />
+      <Item value="name" priority="65" />
+      <Item value="MiniLeagueFixtures" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.Encoding">
+      <Item value="Default" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.Stream">
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Xml.Linq.XElement">
+      <Item value="Parse`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Replace`0" priority="55" />
+      <Item value="Equals`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="WriteAllText`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Scheduler.IFixtureHolder">
+      <Item value="Fixtures" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ObjectModel.Collection`1">
+      <Item value="Add`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Repositories.TeamRepository">
+      <Item value="Equals`0" priority="26" />
+      <Item value="SaveNewTeam`0" priority="26" />
+      <Item value="LoadTeamByName`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Context.ScoreSquidContext">
+      <Item value="Divisions" priority="76" />
+      <Item value="Save`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.Entity.IDbSet`1">
+      <Item value="Include`1" priority="53" />
+      <Item value="Add`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Models.Division">
+      <Item value="Teams" priority="55" />
+      <Item value="DivisionIdentifier" priority="26" />
+      <Item value="BuildDefault`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IQueryable`1">
+      <Item value="ToList`1" priority="26" />
+      <Item value="Where`1" priority="26" />
+      <Item value="FirstOrDefault`1" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Parse`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Repositories.FixtureRepository">
+      <Item value="Save`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.ICollection`1">
+      <Item value="Add`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="RazorTransitionCompletionContext">
+      <Item value="Html" priority="7" />
+      <Item value="using" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper`1">
+      <Item value="EditorFor`2" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="HtmlCodeCompletionContext">
+      <Item value="html" priority="6" />
+      <Item value="h2" priority="5" />
+      <Item value="PredictionViewModel" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Moq.Mock`1">
+      <Item value="Object" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MvcContrib.TestHelper.TestControllerBuilder">
+      <Item value="InitializeController`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Models.MiniLeague">
+      <Item value="MiniLeagueFixtures" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ScoreSquid.Web.Models.Team">
+      <Item value="BuildDefault`0" priority="55" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>
