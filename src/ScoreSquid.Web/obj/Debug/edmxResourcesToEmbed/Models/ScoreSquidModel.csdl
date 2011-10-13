@@ -37,6 +37,15 @@
       <End Role="Fixture" EntitySet="Fixtures" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
+    <EntitySet Name="MiniLeagueFixtures" EntityType="ScoreSquidModel.MiniLeagueFixture" />
+    <AssociationSet Name="MiniLeagueFixtureFixture" Association="ScoreSquidModel.MiniLeagueFixtureFixture">
+      <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
+      <End Role="Fixture" EntitySet="Fixtures" />
+    </AssociationSet>
+    <AssociationSet Name="MiniLeagueFixtureMiniLeague" Association="ScoreSquidModel.MiniLeagueFixtureMiniLeague">
+      <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
+      <End Role="MiniLeague" EntitySet="MiniLeagues" />
+    </AssociationSet>
     <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.PlayerTeam">
       <End Role="Player" EntitySet="Players" />
       <End Role="Team" EntitySet="Teams" />
@@ -62,6 +71,8 @@
     <NavigationProperty Name="AwayTeam" Relationship="ScoreSquidModel.AwayTeamFixture" FromRole="Fixture" ToRole="Team" />
     <Property Type="Int32" Name="AwayTeamId" Nullable="false" />
     <NavigationProperty Name="Result" Relationship="ScoreSquidModel.FixtureResult" FromRole="Fixture" ToRole="Result" />
+    <NavigationProperty Name="MiniLeagueFixture" Relationship="ScoreSquidModel.MiniLeagueFixtureFixture" FromRole="Fixture" ToRole="MiniLeagueFixture" />
+    <Property Type="Int32" Name="MiniLeagueFixtureId" Nullable="false" />
   </EntityType>
   <EntityType Name="MiniLeague">
     <Key>
@@ -73,6 +84,7 @@
     <Property Name="Chairman_Id" Type="Int32" />
     <NavigationProperty Name="Player" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="MiniLeagues" ToRole="Players" />
     <NavigationProperty Name="Players" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="MiniLeagues" ToRole="Players" />
+    <NavigationProperty Name="MiniLeagueFixtures" Relationship="ScoreSquidModel.MiniLeagueFixtureMiniLeague" FromRole="MiniLeague" ToRole="MiniLeagueFixture" />
   </EntityType>
   <EntityType Name="Player">
     <Key>
@@ -180,6 +192,7 @@
     <Property Type="String" Name="Name" Nullable="false" />
     <NavigationProperty Name="Division" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Team" ToRole="Division" />
     <Property Type="Int32" Name="DivisionId" Nullable="false" />
+    <NavigationProperty Name="Player" Relationship="ScoreSquidModel.PlayerTeam" FromRole="Team" ToRole="Player" />
   </EntityType>
   <Association Name="DivisionTeam">
     <End Type="ScoreSquidModel.Division" Role="Division" Multiplicity="1" />
@@ -221,8 +234,32 @@
     <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="1" />
     <End Type="ScoreSquidModel.Result" Role="Result" Multiplicity="1" />
   </Association>
+  <EntityType Name="MiniLeagueFixture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Fixtures" Relationship="ScoreSquidModel.MiniLeagueFixtureFixture" FromRole="MiniLeagueFixture" ToRole="Fixture" />
+    <NavigationProperty Name="MiniLeague" Relationship="ScoreSquidModel.MiniLeagueFixtureMiniLeague" FromRole="MiniLeagueFixture" ToRole="MiniLeague" />
+  </EntityType>
+  <Association Name="MiniLeagueFixtureFixture">
+    <End Type="ScoreSquidModel.MiniLeagueFixture" Role="MiniLeagueFixture" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Fixture" Role="Fixture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MiniLeagueFixture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Fixture">
+        <PropertyRef Name="MiniLeagueFixtureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiniLeagueFixtureMiniLeague">
+    <End Type="ScoreSquidModel.MiniLeagueFixture" Role="MiniLeagueFixture" Multiplicity="*" />
+    <End Type="ScoreSquidModel.MiniLeague" Role="MiniLeague" Multiplicity="1" />
+  </Association>
   <Association Name="PlayerTeam">
     <End Type="ScoreSquidModel.Player" Role="Player" Multiplicity="1" />
-    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="1" />
+    <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="0..1" />
   </Association>
 </Schema>

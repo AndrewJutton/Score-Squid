@@ -51,6 +51,10 @@
       <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
       <End Role="MiniLeague" EntitySet="MiniLeagues" />
     </AssociationSet>
+    <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.Store.PlayerTeam">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Divisions">
     <Key>
@@ -144,6 +148,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DivisionId" Type="int" Nullable="false" />
+    <Property Name="Player_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MiniLeagueFixtures">
     <Key>
@@ -260,6 +265,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PlayerTeam">
+    <End Role="Player" Type="ScoreSquidModel.Store.Players" Multiplicity="1" />
+    <End Role="Team" Type="ScoreSquidModel.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="Player_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -309,6 +326,10 @@
           <AssociationSet Name="MiniLeagueFixtureMiniLeague" Association="ScoreSquidModel.MiniLeagueFixtureMiniLeague">
             <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
             <End Role="MiniLeague" EntitySet="MiniLeagues" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.PlayerTeam">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Team" EntitySet="Teams" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Division">
@@ -360,6 +381,7 @@
           <NavigationProperty Name="MiniLeagues" Relationship="ScoreSquidModel.MiniLeague_Chairman" FromRole="Players" ToRole="MiniLeagues" />
           <NavigationProperty Name="MiniLeague" Relationship="ScoreSquidModel.MiniLeague_Players" FromRole="Players" ToRole="MiniLeagues" />
           <NavigationProperty Name="Score" Relationship="ScoreSquidModel.Player_Score" FromRole="Players" ToRole="Scores" />
+          <NavigationProperty Name="Team" Relationship="ScoreSquidModel.PlayerTeam" FromRole="Player" ToRole="Team" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -451,6 +473,7 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <NavigationProperty Name="Division" Relationship="ScoreSquidModel.DivisionTeam" FromRole="Team" ToRole="Division" />
           <Property Type="Int32" Name="DivisionId" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="ScoreSquidModel.PlayerTeam" FromRole="Team" ToRole="Player" />
         </EntityType>
         <Association Name="DivisionTeam">
           <End Type="ScoreSquidModel.Division" Role="Division" Multiplicity="1" />
@@ -515,6 +538,10 @@
         <Association Name="MiniLeagueFixtureMiniLeague">
           <End Type="ScoreSquidModel.MiniLeagueFixture" Role="MiniLeagueFixture" Multiplicity="*" />
           <End Type="ScoreSquidModel.MiniLeague" Role="MiniLeague" Multiplicity="1" />
+        </Association>
+        <Association Name="PlayerTeam">
+          <End Type="ScoreSquidModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="ScoreSquidModel.Team" Role="Team" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -645,6 +672,14 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="PlayerTeam" TypeName="ScoreSquidModel.PlayerTeam" StoreEntitySet="Teams">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="Id" ColumnName="Player_Id" />
+      </EndProperty>
+      <EndProperty Name="Team">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -684,8 +719,10 @@
           <ConnectorPoint PointX="6.46875" PointY="7.5783902994791665" />
         </AssociationConnector>
         <AssociationConnector Association="ScoreSquidModel.Player_Score" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.25" PointY="5.9276432291666659" />
-          <ConnectorPoint PointX="5" PointY="5.9276432291666659" />
+          <ConnectorPoint PointX="4.25" PointY="5.8158268229166667" />
+          <ConnectorPoint PointX="4.322916666666667" PointY="5.8158268229166659" />
+          <ConnectorPoint PointX="4.489583333333333" PointY="5.8158268229166667" />
+          <ConnectorPoint PointX="5" PointY="5.8158268229166667" />
         </AssociationConnector>
         <EntityTypeShape EntityType="ScoreSquidModel.Team" Width="1.5" PointX="3" PointY="1.375" Height="1.4033821614583331" />
         <AssociationConnector Association="ScoreSquidModel.DivisionTeam">
@@ -716,6 +753,11 @@
           <ConnectorPoint PointX="10.625" PointY="6.8522212382812491" />
           <ConnectorPoint PointX="9.718748" PointY="6.8522212382812491" />
           <ConnectorPoint PointX="9.718748" PointY="7.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="ScoreSquidModel.PlayerTeam">
+          <ConnectorPoint PointX="5" PointY="7.2184456380208335" />
+          <ConnectorPoint PointX="4.40625" PointY="7.2184456380208335" />
+          <ConnectorPoint PointX="4.40625" PointY="3.1316536458333331" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

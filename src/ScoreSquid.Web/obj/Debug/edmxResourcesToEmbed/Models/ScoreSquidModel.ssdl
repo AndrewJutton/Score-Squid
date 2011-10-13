@@ -9,6 +9,7 @@
     <EntitySet Name="Scores" EntityType="ScoreSquidModel.Store.Scores" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Seasons" EntityType="ScoreSquidModel.Store.Seasons" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Teams" EntityType="ScoreSquidModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MiniLeagueFixtures" EntityType="ScoreSquidModel.Store.MiniLeagueFixtures" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MiniLeague_Chairman" Association="ScoreSquidModel.Store.MiniLeague_Chairman">
       <End Role="Players" EntitySet="Players" />
       <End Role="MiniLeagues" EntitySet="MiniLeagues" />
@@ -37,9 +38,13 @@
       <End Role="Fixture" EntitySet="Fixtures" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
-    <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.Store.PlayerTeam">
-      <End Role="Player" EntitySet="Players" />
-      <End Role="Team" EntitySet="Teams" />
+    <AssociationSet Name="MiniLeagueFixtureFixture" Association="ScoreSquidModel.Store.MiniLeagueFixtureFixture">
+      <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
+      <End Role="Fixture" EntitySet="Fixtures" />
+    </AssociationSet>
+    <AssociationSet Name="MiniLeagueFixtureMiniLeague" Association="ScoreSquidModel.Store.MiniLeagueFixtureMiniLeague">
+      <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
+      <End Role="MiniLeague" EntitySet="MiniLeagues" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Divisions">
@@ -58,6 +63,7 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="HomeTeamId" Type="int" Nullable="false" />
     <Property Name="AwayTeamId" Type="int" Nullable="false" />
+    <Property Name="MiniLeagueFixtureId" Type="int" Nullable="false" />
     <Property Name="Result_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MiniLeagues">
@@ -80,7 +86,6 @@
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Score_Id" Type="int" Nullable="true" />
     <Property Name="MiniLeague_Id" Type="int" Nullable="true" />
-    <Property Name="Team_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Results">
     <Key>
@@ -134,6 +139,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DivisionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MiniLeagueFixtures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MiniLeague_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="MiniLeague_Chairman">
     <End Role="Players" Type="ScoreSquidModel.Store.Players" Multiplicity="0..1" />
@@ -219,15 +231,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PlayerTeam">
-    <End Role="Player" Type="ScoreSquidModel.Store.Players" Multiplicity="*" />
-    <End Role="Team" Type="ScoreSquidModel.Store.Teams" Multiplicity="1" />
+  <Association Name="MiniLeagueFixtureFixture">
+    <End Role="MiniLeagueFixture" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="1" />
+    <End Role="Fixture" Type="ScoreSquidModel.Store.Fixtures" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Team">
+      <Principal Role="MiniLeagueFixture">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Player">
-        <PropertyRef Name="Team_Id" />
+      <Dependent Role="Fixture">
+        <PropertyRef Name="MiniLeagueFixtureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiniLeagueFixtureMiniLeague">
+    <End Role="MiniLeagueFixture" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="*" />
+    <End Role="MiniLeague" Type="ScoreSquidModel.Store.MiniLeagues" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MiniLeague">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MiniLeagueFixture">
+        <PropertyRef Name="MiniLeague_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

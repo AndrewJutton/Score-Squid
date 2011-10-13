@@ -22,10 +22,12 @@ namespace ScoreSquid.Web.Tests.Scheduler
         {
             get
             {
+                var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(
+                    "ScoreSquid.Web.Tests.Scheduler.output.html");
+                var doc = stream.ToString();
+                doc = doc.Replace("&", string.Empty);
                 return
-                    XElement.Load(
-                        Assembly.GetExecutingAssembly().GetManifestResourceStream(
-                            "ScoreSquid.Web.Tests.Scheduler.output.html"));
+                    XElement.Parse(doc);
             }
         }
 
@@ -33,7 +35,7 @@ namespace ScoreSquid.Web.Tests.Scheduler
         public void LoadFixturesFromHtml()
         {
             var fixtureHolder = WebFixtureImporter.Parse(Html);
-        }   cm
+        }   
     }
 
 }

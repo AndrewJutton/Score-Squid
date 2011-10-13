@@ -19,5 +19,6 @@ namespace ScoreSquid.Web.Models
         public int DivisionId { get; set; }
     
         public virtual Division Division { get; set; }
+        public virtual Player Player { get; set; }
     }
 }
