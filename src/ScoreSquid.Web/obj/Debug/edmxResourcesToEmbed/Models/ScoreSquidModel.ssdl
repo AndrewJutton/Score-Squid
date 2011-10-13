@@ -34,10 +34,6 @@
       <End Role="Team" EntitySet="Teams" />
       <End Role="Fixture" EntitySet="Fixtures" />
     </AssociationSet>
-    <AssociationSet Name="FixtureResult" Association="ScoreSquidModel.Store.FixtureResult">
-      <End Role="Fixture" EntitySet="Fixtures" />
-      <End Role="Result" EntitySet="Results" />
-    </AssociationSet>
     <AssociationSet Name="MiniLeagueFixtureFixture" Association="ScoreSquidModel.Store.MiniLeagueFixtureFixture">
       <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
       <End Role="Fixture" EntitySet="Fixtures" />
@@ -45,6 +41,14 @@
     <AssociationSet Name="MiniLeagueFixtureMiniLeague" Association="ScoreSquidModel.Store.MiniLeagueFixtureMiniLeague">
       <End Role="MiniLeagueFixture" EntitySet="MiniLeagueFixtures" />
       <End Role="MiniLeague" EntitySet="MiniLeagues" />
+    </AssociationSet>
+    <AssociationSet Name="PlayerTeam" Association="ScoreSquidModel.Store.PlayerTeam">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FixtureResult" Association="ScoreSquidModel.Store.FixtureResult">
+      <End Role="Fixture" EntitySet="Fixtures" />
+      <End Role="Result" EntitySet="Results" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Divisions">
@@ -63,8 +67,8 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="HomeTeamId" Type="int" Nullable="false" />
     <Property Name="AwayTeamId" Type="int" Nullable="false" />
-    <Property Name="MiniLeagueFixtureId" Type="int" Nullable="false" />
-    <Property Name="Result_Id" Type="int" Nullable="false" />
+    <Property Name="MiniLeagueFixtureId" Type="int" Nullable="true" />
+    <Property Name="MiniLeagueFixture_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="MiniLeagues">
     <Key>
@@ -86,6 +90,7 @@
     <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Score_Id" Type="int" Nullable="true" />
     <Property Name="MiniLeague_Id" Type="int" Nullable="true" />
+    <Property Name="Team_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Results">
     <Key>
@@ -114,6 +119,7 @@
     <Property Name="AwayTeam_Offsides" Type="int" Nullable="false" />
     <Property Name="AwayTeam_YellowCards" Type="int" Nullable="false" />
     <Property Name="AwayTeam_RedCards" Type="int" Nullable="false" />
+    <Property Name="Fixture_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Scores">
     <Key>
@@ -219,27 +225,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FixtureResult">
-    <End Role="Fixture" Type="ScoreSquidModel.Store.Fixtures" Multiplicity="*" />
-    <End Role="Result" Type="ScoreSquidModel.Store.Results" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Result">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Fixture">
-        <PropertyRef Name="Result_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="MiniLeagueFixtureFixture">
-    <End Role="MiniLeagueFixture" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="1" />
+    <End Role="MiniLeagueFixture" Type="ScoreSquidModel.Store.MiniLeagueFixtures" Multiplicity="0..1" />
     <End Role="Fixture" Type="ScoreSquidModel.Store.Fixtures" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MiniLeagueFixture">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Fixture">
-        <PropertyRef Name="MiniLeagueFixtureId" />
+        <PropertyRef Name="MiniLeagueFixture_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -252,6 +246,30 @@
       </Principal>
       <Dependent Role="MiniLeagueFixture">
         <PropertyRef Name="MiniLeague_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayerTeam">
+    <End Role="Player" Type="ScoreSquidModel.Store.Players" Multiplicity="*" />
+    <End Role="Team" Type="ScoreSquidModel.Store.Teams" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="Team_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FixtureResult">
+    <End Role="Fixture" Type="ScoreSquidModel.Store.Fixtures" Multiplicity="1" />
+    <End Role="Result" Type="ScoreSquidModel.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fixture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="Fixture_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

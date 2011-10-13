@@ -99,7 +99,7 @@ namespace ScoreSquid.Web.Tests
                     fixture.HomeTeam = homeTeam;
                     fixture.AwayTeam = awayTeam;
                     fixture.Date = result.Date.TryDateParse();
-                    fixture.Result = matchResult;
+                    fixture.Result.Add(matchResult);
                 }
 
                 fixtureRepository.Save(fixture);

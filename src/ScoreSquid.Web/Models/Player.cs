@@ -26,6 +26,7 @@ namespace ScoreSquid.Web.Models
         public string Surname { get; set; }
         public Nullable<int> Score_Id { get; set; }
         public Nullable<int> MiniLeague_Id { get; set; }
+        public Nullable<int> Team_Id { get; set; }
     
         public virtual ICollection<MiniLeague> MiniLeagues { get; set; }
         public virtual MiniLeague MiniLeague { get; set; }

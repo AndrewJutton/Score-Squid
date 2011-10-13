@@ -37,5 +37,8 @@ namespace ScoreSquid.Web.Models
         public int AwayTeam_Offsides { get; set; }
         public int AwayTeam_YellowCards { get; set; }
         public int AwayTeam_RedCards { get; set; }
+        public int Fixture_Id { get; set; }
+    
+        public virtual Fixture Fixture { get; set; }
     }
 }

@@ -165,6 +165,7 @@
     <Compile Include="Repositories\Commands\ITeamCommands.cs" />
     <Compile Include="Repositories\FixtureRepository.cs" />
     <Compile Include="Repositories\Commands\IFixtureCommands.cs" />
+    <Compile Include="Repositories\IDivisionRepository.cs" />
     <Compile Include="Repositories\IFixtureRepository.cs" />
     <Compile Include="Repositories\IPlayerRepository.cs" />
     <Compile Include="Repositories\ITeamRepository.cs" />

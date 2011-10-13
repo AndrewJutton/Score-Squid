@@ -19,13 +19,15 @@ namespace ScoreSquid.Web.Scheduler
         public static IFixtureHolder Parse(XElement parsedHtml)
         {
             var p = new WebFixtureImporter();
+            var holder = (IFixtureHolder)p;
+            var fixtures = holder.Fixtures = new Collection<Fixture>();
             foreach (var tdElements in GetDescendentsByClass(parsedHtml, "td", "class", "details"))
             {
                 var fixture = new Fixture();
                 var date = DateTime.Parse(GetDescendentsByClass(tdElements.Parent, "td", "class", "date").First().Value);
                 var homeTeam = GetDescendentsByClass(tdElements, "li", "class", "home").Elements().First().Value;
                 var awayTeam = GetDescendentsByClass(tdElements, "li", "class", "away").Elements().First().Value;
-                var a = "b";
+                fixtures.Add(new Fixture {});
             }
 
             return p;

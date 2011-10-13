@@ -14,15 +14,20 @@ namespace ScoreSquid.Web.Models
     
     public partial class Fixture
     {
+        public Fixture()
+        {
+            this.Result = new HashSet<Result>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public int HomeTeamId { get; set; }
         public int AwayTeamId { get; set; }
-        public int MiniLeagueFixtureId { get; set; }
+        public Nullable<int> MiniLeagueFixtureId { get; set; }
     
         public virtual Team HomeTeam { get; set; }
         public virtual Team AwayTeam { get; set; }
-        public virtual Result Result { get; set; }
         public virtual MiniLeagueFixture MiniLeagueFixture { get; set; }
+        public virtual ICollection<Result> Result { get; set; }
     }
 }

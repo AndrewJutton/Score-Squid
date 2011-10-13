@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2011 21:04:59
+-- Date Created: 10/13/2011 22:23:48
 -- Generated from EDMX file: C:\Projects\Web\Score-Squid\src\ScoreSquid.Web\Models\ScoreSquidModel.edmx
 -- --------------------------------------------------
 
@@ -35,14 +35,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AwayTeamFixture]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Fixtures] DROP CONSTRAINT [FK_AwayTeamFixture];
 GO
-IF OBJECT_ID(N'[dbo].[FK_FixtureResult]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Fixtures] DROP CONSTRAINT [FK_FixtureResult];
-GO
 IF OBJECT_ID(N'[dbo].[FK_MiniLeagueFixtureFixture]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Fixtures] DROP CONSTRAINT [FK_MiniLeagueFixtureFixture];
 GO
 IF OBJECT_ID(N'[dbo].[FK_MiniLeagueFixtureMiniLeague]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MiniLeagueFixtures] DROP CONSTRAINT [FK_MiniLeagueFixtureMiniLeague];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerTeam]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Players] DROP CONSTRAINT [FK_PlayerTeam];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FixtureResult]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Results] DROP CONSTRAINT [FK_FixtureResult];
 GO
 
 -- --------------------------------------------------
@@ -95,8 +98,8 @@ CREATE TABLE [dbo].[Fixtures] (
     [Date] datetime  NOT NULL,
     [HomeTeamId] int  NOT NULL,
     [AwayTeamId] int  NOT NULL,
-    [MiniLeagueFixtureId] int  NOT NULL,
-    [Result_Id] int  NOT NULL
+    [MiniLeagueFixtureId] int  NULL,
+    [MiniLeagueFixture_Id] int  NULL
 );
 GO
 
@@ -117,7 +120,8 @@ CREATE TABLE [dbo].[Players] (
     [Forename] nvarchar(40)  NOT NULL,
     [Surname] nvarchar(40)  NOT NULL,
     [Score_Id] int  NULL,
-    [MiniLeague_Id] int  NULL
+    [MiniLeague_Id] int  NULL,
+    [Team_Id] int  NULL
 );
 GO
 
@@ -145,7 +149,8 @@ CREATE TABLE [dbo].[Results] (
     [AwayTeam_FoulsCommitted] int  NOT NULL,
     [AwayTeam_Offsides] int  NOT NULL,
     [AwayTeam_YellowCards] int  NOT NULL,
-    [AwayTeam_RedCards] int  NOT NULL
+    [AwayTeam_RedCards] int  NOT NULL,
+    [Fixture_Id] int  NOT NULL
 );
 GO
 
@@ -170,8 +175,7 @@ GO
 CREATE TABLE [dbo].[Teams] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [DivisionId] int  NOT NULL,
-    [Player_Id] int  NOT NULL
+    [DivisionId] int  NOT NULL
 );
 GO
 
@@ -328,24 +332,10 @@ ON [dbo].[Fixtures]
     ([AwayTeamId]);
 GO
 
--- Creating foreign key on [Result_Id] in table 'Fixtures'
-ALTER TABLE [dbo].[Fixtures]
-ADD CONSTRAINT [FK_FixtureResult]
-    FOREIGN KEY ([Result_Id])
-    REFERENCES [dbo].[Results]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_FixtureResult'
-CREATE INDEX [IX_FK_FixtureResult]
-ON [dbo].[Fixtures]
-    ([Result_Id]);
-GO
-
--- Creating foreign key on [MiniLeagueFixtureId] in table 'Fixtures'
+-- Creating foreign key on [MiniLeagueFixture_Id] in table 'Fixtures'
 ALTER TABLE [dbo].[Fixtures]
 ADD CONSTRAINT [FK_MiniLeagueFixtureFixture]
-    FOREIGN KEY ([MiniLeagueFixtureId])
+    FOREIGN KEY ([MiniLeagueFixture_Id])
     REFERENCES [dbo].[MiniLeagueFixtures]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -353,7 +343,7 @@ ADD CONSTRAINT [FK_MiniLeagueFixtureFixture]
 -- Creating non-clustered index for FOREIGN KEY 'FK_MiniLeagueFixtureFixture'
 CREATE INDEX [IX_FK_MiniLeagueFixtureFixture]
 ON [dbo].[Fixtures]
-    ([MiniLeagueFixtureId]);
+    ([MiniLeagueFixture_Id]);
 GO
 
 -- Creating foreign key on [MiniLeague_Id] in table 'MiniLeagueFixtures'
@@ -370,18 +360,32 @@ ON [dbo].[MiniLeagueFixtures]
     ([MiniLeague_Id]);
 GO
 
--- Creating foreign key on [Player_Id] in table 'Teams'
-ALTER TABLE [dbo].[Teams]
+-- Creating foreign key on [Team_Id] in table 'Players'
+ALTER TABLE [dbo].[Players]
 ADD CONSTRAINT [FK_PlayerTeam]
-    FOREIGN KEY ([Player_Id])
-    REFERENCES [dbo].[Players]
+    FOREIGN KEY ([Team_Id])
+    REFERENCES [dbo].[Teams]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PlayerTeam'
 CREATE INDEX [IX_FK_PlayerTeam]
-ON [dbo].[Teams]
-    ([Player_Id]);
+ON [dbo].[Players]
+    ([Team_Id]);
+GO
+
+-- Creating foreign key on [Fixture_Id] in table 'Results'
+ALTER TABLE [dbo].[Results]
+ADD CONSTRAINT [FK_FixtureResult]
+    FOREIGN KEY ([Fixture_Id])
+    REFERENCES [dbo].[Fixtures]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FixtureResult'
+CREATE INDEX [IX_FK_FixtureResult]
+ON [dbo].[Results]
+    ([Fixture_Id]);
 GO
 
 -- --------------------------------------------------

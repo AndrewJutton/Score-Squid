@@ -14,11 +14,16 @@ namespace ScoreSquid.Web.Models
     
     public partial class Team
     {
+        public Team()
+        {
+            this.Player = new HashSet<Player>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public int DivisionId { get; set; }
     
         public virtual Division Division { get; set; }
-        public virtual Player Player { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

@@ -8,7 +8,10 @@ using ScoreSquid.Web.Context;
 
 namespace ScoreSquid.Web.Repositories.Commands
 {
-    public class Commands : IFixtureCommands, IPlayerCommands, ITeamCommands
+    public class Commands : IFixtureCommands, 
+                            IPlayerCommands, 
+                            ITeamCommands,
+                            IDivisonCommands
     {
         public List<Fixture> GetAllFixtures(ScoreSquidContext context)
         {
@@ -84,6 +87,28 @@ namespace ScoreSquid.Web.Repositories.Commands
                     .Teams
                     .Include(x => x.Division)
                     .FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        public List<Division> GetAllDivisions(ScoreSquidContext context)
+        {
+            return context
+                    .Divisions
+                    .Include(x => x.Teams)
+                    .ToList();
+        }
+
+        public Division GetDivisionByIdentifier(ScoreSquidContext context, string leagueIdentifier)
+        {
+            return context
+                    .Divisions
+                    .Include(x => x.Teams)
+                    .FirstOrDefault(x => x.DivisionIdentifier.Equals(leagueIdentifier));
+        }
+
+        public void SaveDivison(ScoreSquidContext context, Division division)
+        {
+            context.Divisions.Add(division);
+            context.Save();
         }
     }
 }

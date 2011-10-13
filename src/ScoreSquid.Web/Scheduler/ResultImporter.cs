@@ -87,7 +87,7 @@ namespace ScoreSquid.Web.Scheduler
                     fixture.HomeTeam = homeTeam;
                     fixture.AwayTeam = awayTeam;
                     fixture.Date = result.Date.TryDateParse();
-                    fixture.Result = matchResult;
+                    fixture.Result.Add(matchResult);
                 }
 
                 FixtureRepository.Save(fixture);
