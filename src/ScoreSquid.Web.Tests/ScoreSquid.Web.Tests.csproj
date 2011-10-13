@@ -80,7 +80,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\ScoreSquidBuilders.cs" />
     <Compile Include="Controllers\PlayerControllerTests.cs" />
+    <Compile Include="Controllers\PredictionControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultImporter.cs" />
     <Compile Include="Scheduler\FixturesJobTests.cs" />

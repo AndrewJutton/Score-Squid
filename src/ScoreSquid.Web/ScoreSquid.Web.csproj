@@ -112,6 +112,7 @@
     <Compile Include="Controllers\FixtureController.cs" />
     <Compile Include="Controllers\MiniLeagueController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\PredictionController.cs" />
     <Compile Include="DependencyResolvers\NinjectDependencyResolver.cs" />
     <Compile Include="ErrorHandling\JavaScriptException.cs" />
     <Compile Include="ErrorHandling\ElmahHandleErrorAttribute.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="ViewModels\FixtureViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MiniLeagueViewModel.cs" />
+    <Compile Include="ViewModels\PredictionViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +274,7 @@
     <Content Include="Views\Player\Login.cshtml" />
     <Content Include="Views\Shared\_LoginStatus.cshtml" />
     <Content Include="Views\Shared\_MINIPROFILER UPDATED Layout.cshtml" />
+    <Content Include="Views\Prediction\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
